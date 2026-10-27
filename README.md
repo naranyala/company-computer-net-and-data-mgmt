@@ -1,826 +1,880 @@
 # Company Computer Networking and Data Management Catalog
 
-A practical, detailed guide for IT support, systems administration, and digital operations in small-to-medium businesses (SMBs). This catalog is designed around the real-world responsibilities of keeping a company’s computers, network, users, and company data available, secure, and operational.
+A practical, business-focused reference for small-to-medium company IT support, systems administration, and digital operations.
 
-This is not just a theory document. It is a working knowledge base for:
+This catalog is designed for the people who keep company technology working every day: help desk staff, desktop support technicians, IT administrators, office technology managers, network support engineers, and small-business IT teams.
 
-- help desk technicians
-- desktop support specialists
-- network support engineers
-- IT administrators
-- junior system administrators
-- office technology managers
-- small-business IT operations teams
+The focus is not abstract theory alone. It is the real work of supporting end users, managing office networks, protecting company data, maintaining access rights, troubleshooting devices, and keeping operations reliable.
 
 ---
 
-## 1. Purpose of this catalog
+## Why this catalog matters
 
-This repository focuses on the technologies and processes that keep a business running every day:
+In a small or medium business, IT usually touches everything:
 
-- office and remote networking
-- endpoint protection and support
+- user computers and printers
+- office Wi‑Fi and internet connectivity
+- servers and shared storage
+- user accounts, email, and access rights
+- cloud tools and remote access
+- backups and business continuity
+- security, patching, and endpoint health
+
+When the IT environment is healthy, the business runs smoothly. When it breaks, the impact is immediate.
+
+---
+
+## Scope of the catalog
+
+This repository covers the core areas of company IT support:
+
+- networking and internet connectivity
+- workstation and laptop support
 - user identity and access management
-- file storage and shared data access
-- backups, restore, and business continuity
-- security basics for SMB environments
-- support operations and troubleshooting
-
-The aim is to provide a useful manual for solving the most common IT problems in a small-to-medium company without relying on vendor-specific memorization.
-
----
-
-## 2. Why small-to-medium company IT is different
-
-Unlike large enterprises, SMB environments often have:
-
-- fewer IT specialists
-- broader responsibilities for each technician
-- mixed hardware and software vendors
-- limited dedicated networking teams
-- a need to support users across departments quickly
-- tighter operational budgets
-- greater reliance on practical troubleshooting and documentation
-
-This means a strong SMB IT professional must be flexible and understand the full stack:
-
-- physical networking
-- desktop and laptop support
-- identity and permissions
-- file sharing and storage
-- backups and disaster recovery
-- cloud services and remote access
-- security hygiene and escalation paths
+- file storage and shared folders
+- backup and disaster recovery
+- endpoint and security hygiene
+- troubleshooting and support workflow
+- documentation and operational discipline
 
 ---
 
-## 3. The IT support model in a business environment
+## Typical SMB IT environment
 
-A typical SMB IT environment includes several layers working together:
+A small-to-medium business IT environment often includes:
 
-| Layer | Description | Examples |
+- ISP internet connection and edge router
+- firewall and secure gateway
+- LAN switches and Wi‑Fi access points
+- laptops, desktops, and mobile devices
+- printers, scanners, and office equipment
+- Active Directory or cloud identity platform
+- file server or NAS storage
+- backup appliance or cloud backup service
+- SaaS tools such as email, document storage, CRM, and ticketing
+
+---
+
+## Core layers of a business IT system
+
+| Layer | Purpose | Typical components |
 | --- | --- | --- |
-| Access layer | User connectivity to the company systems | Wi‑Fi, Ethernet, VPN, printers, laptops |
-| Network layer | Company communication backbone | switches, routers, firewalls, VLANs, ISP links |
-| Identity layer | Who a user is and what they can do | AD, Entra ID, local accounts, MFA, group policy |
-| Device layer | User hardware and support endpoints | desktops, laptops, phones, tablets, scanners |
-| Data layer | Where business information lives | file servers, NAS, cloud shares, databases |
-| Security layer | Protection and governance | endpoint protection, MFA, updates, access reviews |
-| Operations layer | Continuous support and maintenance | ticketing, monitoring, backups, patching, documentation |
-
-A stable company IT environment balances all of these layers. A problem in one layer can create symptoms in another.
+| Access layer | User connectivity | Wi‑Fi, LAN, VPN, printers, devices |
+| Network layer | Routing and communication | switches, routers, firewalls, VLANs, ISP |
+| Identity layer | Authentication and access | accounts, MFA, groups, permissions |
+| Device layer | Workstations and endpoints | laptops, desktops, mobile devices, scanners |
+| Data layer | Storage and file access | file servers, NAS, cloud drives, databases |
+| Security layer | Protection and governance | patching, endpoint protection, access reviews |
+| Operations layer | Maintenance and support | monitoring, tickets, backups, documentation |
 
 ---
 
-## 4. Company network fundamentals
+## 1. Network fundamentals for company IT
 
-### 4.1 Network topologies used in SMBs
+### 1.1 Office network design
 
-Most small businesses use a simplified version of a standard enterprise design:
+A basic office network typically includes:
 
-- internet connection from ISP
-- firewall or secure gateway
-- one or more switches
-- Wi‑Fi access points for office mobility
-- VLANs for segmentation
-- servers or hosted services for files, identity, and apps
-- remote access through VPN or cloud secure access
+- modem or ISP router
+- firewall or security appliance
+- core switch and access switches
+- Wi‑Fi access points
+- VLANs for guest, voice, management, or server traffic
+- user endpoints
+- shared services such as file servers and printers
 
-Typical SMB layouts:
+### 1.2 Common networking concepts
 
-- single-site office network
-- branch office + headquarters
-- small office with cloud-first services
-- hybrid model: local servers + Microsoft 365 / Google Workspace / SaaS apps
-
-### 4.2 Common network components
-
-#### Internet edge
-The internet connection is usually where all traffic enters and exits the business.
-
-Support concerns:
-- ISP outages
-- bandwidth saturation
-- poor latency
-- NAT and port forwarding issues
-- firewall rule changes affecting business apps
-
-#### Firewall
-A firewall controls traffic between trusted and untrusted networks.
-
-Common SMB tasks:
-- open inbound rules for business applications
-- allow VPN remote access
-- review recent changes after outages
-- ensure blocked ports are intentional
-- monitor suspicious activity
-
-#### Switches
-Switches connect devices on the office LAN.
-
-Common issues:
-- bad cable or connector
-- port disabled or failed
-- VLAN mismatch
-- spanning-tree or loop issues
-- switch resource exhaustion
-
-#### Access points and Wi‑Fi
-Wi‑Fi is often the most frequent source of user complaints.
-
-Typical concerns:
-- weak signal in some office areas
-- overlap or channel interference
-- roaming issues between APs
-- guest network separation
-- unsupported devices or stale profiles
-- poor placement or missing coverage planning
-
-#### DHCP and DNS
-These are essentials for making a network function without manual static configuration.
-
-DHCP provides:
-- IP address
-- subnet mask
-- default gateway
-- DNS server addresses
-
-DNS resolves:
-- local names like `fileserver`
-- mail systems
-- internal applications
-- internet names used by users
-
-### 4.3 IP, subnet, and route basics
-
-#### IP address
+#### IP addressing
 An IP address identifies a device on a network.
 
 Examples:
-- `192.168.10.15`
-- `10.0.0.42`
-- `172.16.5.10`
+- `192.168.10.20`
+- `10.0.0.15`
+
+Support relevance:
+- no valid IP often means DHCP or link issue
+- duplicate IPs can break connectivity
+- wrong subnet can isolate a device from the rest of the office
 
 #### Subnet mask
-A subnet mask separates the network portion and host portion of an IP address.
+Tells devices how to determine the local network from the host portion of an address.
 
-This matters because:
-- devices on the same subnet can communicate directly
-- devices on different subnets require a router or gateway
-- wrong subnet values cause communication problems that can look random
+#### Default gateway
+Allows a device to reach other networks, including the internet.
 
-#### Gateway
-The default gateway allows traffic to leave the local LAN for the internet or another network.
+#### DNS
+Converts names like `fileserver` or `mail.company.com` into IP addresses.
 
-#### Routing
-Routing allows devices to find the path to other destinations. In SMBs, this often happens automatically with simple router/firewall setups.
+Common symptoms of DNS problems:
+- websites fail to load
+- file servers cannot be reached by name
+- apps cannot resolve internal services
+- email may fail or appear intermittent
 
----
+#### DHCP
+Automatically assigns network details to clients.
 
-## 5. Data management in a company environment
+Common issues:
+- no IP lease issued
+- rogue DHCP server on the network
+- stale lease after network changes
+- gateway or DNS assigned incorrectly
 
-Data management is the discipline of making sure information is:
+#### Router and firewall
+The router connects local traffic to other networks. The firewall enforces policy for inbound and outbound traffic.
 
-- available when needed
-- protected from loss
-- shared only with the right people
-- retained according to business needs
-- recoverable in the event of failure
+#### Switches and ports
+Switches connect devices within a LAN and provide physical access points.
 
-### 5.1 Where business data lives
+Common issues:
+- broken patch cable
+- disabled switch port
+- wrong VLAN assignment
+- loop or broadcast storm conditions
 
-In SMBs, business data may be stored in:
+#### Wi‑Fi
+Wireless connectivity is often the most frequent source of user complaints in offices.
 
-- local workstations
-- file servers at the office
-- NAS devices
-- cloud storage platforms
-- SaaS applications
-- database servers
-- backups and archives
+Typical concerns:
+- low signal strength
+- dead zones
+- channel overlap
+- poor AP placement
+- roaming issues
+- guest network isolation problems
 
-### 5.2 Shared file access
-
-File systems are often the most important business data layer. They support:
-
-- department folders
-- project files
-- finance and HR data
-- accounting records
-- documentation and templates
-- operations files used by staff daily
-
-Common support tasks:
-- adding a new shared folder
-- reviewing permissions after role changes
-- troubleshooting missing drive mappings
-- resolving locked files or stale access links
-- verifying storage capacity before outages
-
-### 5.3 File permissions and least privilege
-
-A big part of IT support is access management. Staff should only have the permissions they actually need.
-
-Good model:
-- groups rather than individual permissions where possible
-- least privilege
-- regular permission review
-- clear ownership of shared folders
-- documented approval for access changes
-
-Bad model:
-- broad access for convenience
-- everyone in a shared admin group
-- stale accounts keeping access after exit
-- unmanaged permissions on critical folders
-
-### 5.4 NAS and SAN
-
-#### NAS
-A NAS is a file-based storage appliance connected over the network.
-
-Typical uses:
-- shared user files
-- backups
-- media storage
-- departmental file repositories
-- internal server backups
-
-#### SAN
-A SAN is usually used for block-level storage, often by servers and VM hosts.
-
-Typical uses:
-- databases
-- virtual machine storage
-- enterprise applications
-- high-availability storage backends
-
----
-
-## 6. Identity and access management
-
-Identity is central to company IT. If identity is wrong, users cannot do their work even when the network itself is healthy.
-
-### 6.1 User lifecycle management
-
-Support teams usually manage the full employee lifecycle:
-
-- onboarding
-- role changes
-- access reviews
-- offboarding
-
-Onboarding examples:
-- create account
-- assign group membership
-- set up email and portal access
-- provision VPN rights
-- install software or assign standard image
-- map shared drives and printers
-
-Offboarding examples:
-- disable account
-- remove device access
-- revoke group permissions
-- remove cloud tools
-- recover company property
-- archive or transfer data when necessary
-
-### 6.2 Authentication and MFA
-
-Authentication verifies the user is who they say they are.
-
-Common SMB tools:
-- Microsoft Entra ID / Azure AD
-- Active Directory
-- Google Workspace identity services
-- local accounts on device and service layers
-
-MFA is often required for:
-- remote access
-- admin accounts
-- cloud email
-- VPN
-- finance and HR systems
-
-Support issues include:
-- lost phone or stale device enrollment
-- users not receiving approval prompts
-- MFA lockout after policy changes
-- authenticator app setup errors
-
-### 6.3 Groups and role-based access control
-
-Role-based access control (RBAC) reduces complexity and risk.
+#### VLANs
+VLANs separate traffic logically even when devices share the same physical switch.
 
 Examples:
-- All Staff
-- Accounting Team
-- HR Team
-- IT Admins
-- Managers
-- Site A Users
+- management VLAN
+- staff VLAN
+- guest Wi‑Fi VLAN
+- server VLAN
+- voice VLAN
 
-When access is assigned properly, support becomes much easier.
+### 1.3 Connectivity troubleshooting checklist
+
+When a user says “I can’t access the internet,” check:
+
+- device is connected to Wi‑Fi or wired LAN
+- IP address is valid
+- gateway is reachable
+- DNS answers correctly
+- user is not using a blocked VPN route
+- firewall is not blocking the connection
+- ISP service is healthy
 
 ---
 
-## 7. Endpoint support and device lifecycle
+## 2. Endpoints and workstation support
 
-The endpoint is the user-facing part of IT support. It includes laptops, desktops, mobile devices, printers, scanners, and conference hardware.
+Most day-to-day IT support revolves around endpoints.
 
-### 7.1 Device inventory
+### 2.1 Common endpoint categories
 
-A useful SMB environment tracks:
+- desktops
+- laptops
+- tablets
+- mobile phones
+- printers
+- scanners
+- conference room hardware
+- thin clients or kiosk devices
+
+### 2.2 Typical desktop and laptop problems
+
+- slow boot or startup
+- application crashes
+- drivers not working
+- patching issues
+- user profile corruption
+- missing permissions
+- storage space consumption
+- malware or unexpected software installation
+
+### 2.3 Printer support
+
+Printers are a major source of office tickets.
+
+Common issues:
+- queue stuck
+- printer offline
+- wrong IP address or hostname
+- driver mismatch
+- print spooler failure
+- switch port or Wi‑Fi connectivity issue
+
+### 2.4 Mobile device support
+
+Support often includes:
+
+- email configuration
+- MFA enrollment
+- VPN setup
+- mobile device management
+- lost or stolen device process
+- remote wipe and access revocation
+
+---
+
+## 3. Identity and access management
+
+### 3.1 User identity basics
+
+A user identity is how a person is recognized in the company’s digital systems.
+
+Examples:
+- Active Directory
+- Microsoft Entra ID
+- Google Workspace accounts
+- local accounts
+- service accounts
+
+### 3.2 Onboarding
+
+Typical onboarding steps:
+
+- create account
+- assign company email
+- provide access to shared resources
+- assign correct groups
+- install required software
+- configure VPN or remote access
+- map printers and shared drives
+- verify user is ready to work
+
+### 3.3 Offboarding
+
+Offboarding is critical for security:
+
+- disable account
+- revoke access to shared drives
+- remove SaaS licenses
+- transfer or archive data if required
+- collect company equipment
+- verify no lingering access remains
+
+### 3.4 Permissions and groups
+
+Permissions should be controlled and reviewed regularly.
+
+Best practices:
+- group-based access whenever possible
+- least privilege approach
+- periodic permission review
+- document access approval
+- remove stale rights after role changes
+
+### 3.5 MFA and authentication support
+
+Common support cases:
+- approval not reached
+- new phone or device enrollment
+- app resets
+- lockout due to repeated failed attempts
+- user cannot access VPN or email after policy changes
+
+---
+
+## 4. Shared data and file management
+
+### 4.1 Where company data usually lives
+
+- file servers
+- NAS devices
+- department shared folders
+- cloud storage such as OneDrive, SharePoint, Google Drive
+- databases and business applications
+- email archives and collaboration platforms
+
+### 4.2 Shared folder design
+
+A well-structured shared data model includes:
+
+- HR and payroll folders
+- finance and accounting data
+- project and operational documents
+- shared templates and forms
+- archived records and retention storage
+
+### 4.3 File permission model
+
+Recommended approach:
+
+- assign permissions through groups
+- avoid over-broad access
+- audit folders with sensitive data
+- document who owns each share
+- review access regularly
+
+### 4.4 Support issues in data access
+
+- user cannot open a folder
+- file is read-only unexpectedly
+- share mapping is broken
+- permission inherited unexpectedly
+- file server is offline or slow
+- user has wrong department access
+
+---
+
+## 5. Backup, storage, and continuity
+
+### 5.1 Backup fundamentals
+
+Backups protect company data against:
+
+- hardware failure
+- ransomware or malware attacks
+- accidental deletion
+- software corruption
+- user mistakes
+- natural disasters or power outages
+
+### 5.2 What to back up
+
+Common business data to back up:
+
+- file shares
+- server data
+- virtual machines
+- databases
+- email data
+- cloud storage content
+- endpoint data where required
+
+### 5.3 Backup design questions
+
+- What is being backed up?
+- Where is it stored?
+- How often does it run?
+- How long is it retained?
+- What happens if the backup target fails?
+- Has a restore been tested recently?
+
+### 5.4 Recovery objectives
+
+- RPO: Recovery Point Objective — how much data loss is acceptable
+- RTO: Recovery Time Objective — how quickly restoration must happen
+
+### 5.5 Types of storage targets
+
+- local NAS appliance
+- offsite or cloud backup service
+- external disk rotation
+- virtualization backup tools
+- SaaS retention tools
+
+### 5.6 Disaster recovery
+
+Disaster recovery planning includes:
+
+- restoring failed servers
+- recovering file shares
+- re-establishing email and identity access
+- restoring remote access and office connectivity
+- validating business-critical systems first
+
+---
+
+## 6. Security basics for small and medium companies
+
+SMBs are often targeted because they may have weaker defenses and fewer specialized staff.
+
+### 6.1 Basic security controls
+
+- strong password policies
+- MFA on critical systems
+- patching and software updates
+- antivirus and endpoint protection
+- user access review
+- secure Wi‑Fi settings
+- least privilege access
+- backup verification
+- logging and alert review
+
+### 6.2 Common security issues
+
+- phishing attempts
+- password reuse
+- stale accounts
+- unpatched operating systems
+- local admin rights for too many users
+- insecure remote access
+- poor backup testing
+- employees downloading unapproved software
+
+### 6.3 Security operations checklist
+
+- verify user access after role changes
+- monitor alerts for suspicious activity
+- review firewall logs periodically
+- check endpoint protection status
+- confirm backups succeed and are restorable
+- verify patch status on critical devices
+
+---
+
+## 7. Servers, virtualization, and infrastructure basics
+
+Even small companies may run basic server infrastructure.
+
+### 7.1 Standard server roles
+
+- domain controller or identity service
+- file server
+- print server
+- database server
+- application server
+- backup server
+- virtual machine host
+
+### 7.2 Virtualization concepts
+
+Virtual machines allow a business to run several systems on fewer physical servers.
+
+Support tasks include:
+
+- VM health checks
+- storage usage review
+- snapshot management
+- host resource monitoring
+- VM backup and restore verification
+
+### 7.3 Server health checks
+
+- CPU utilization
+- RAM usage
+- storage capacity
+- service health
+- event logs
+- uptime and unexpected restarts
+
+---
+
+## 8. Cloud services and SaaS in company IT
+
+Modern businesses rely heavily on cloud tools.
+
+### 8.1 Common cloud services
+
+- Microsoft 365 / Outlook / SharePoint / OneDrive
+- Google Workspace
+- cloud storage solutions
+- file collaboration tools
+- customer relationship systems
+- ticketing and project systems
+
+### 8.2 Cloud support concerns
+
+- failed sync
+- storage quotas
+- stale sharing links
+- MFA or sign-in issues
+- permission mismatches
+- downtime or service outages
+
+### 8.3 Hybrid environments
+
+Many companies use both local infrastructure and cloud services.
+
+Examples:
+- local file server + cloud email
+- Azure AD / Entra ID with local domain services
+- on-prem login with cloud productivity apps
+- remote access through VPN and cloud identity tools
+
+---
+
+## 9. Monitoring, maintenance, and proactive support
+
+A reliable IT environment is not just reactive. It includes proactive monitoring.
+
+### 9.1 Monitoring activities
+
+- uptime checks
+- disk usage monitoring
+- backup success verification
+- firewall event review
+- internet connectivity checks
+- endpoint health checks
+- certificate expiry monitoring
+- service availability monitoring
+
+### 9.2 Maintenance windows
+
+Regular maintenance includes:
+
+- patching and updates
+- reboot scheduling for devices or services
+- backup validation
+- access review
+- hardware health review
+- software inventory cleanup
+
+### 9.3 Preventive support mindset
+
+The best IT teams reduce ticket volume by doing small things early:
+
+- keep devices updated
+- review storage before it fills up
+- monitor backups daily
+- document changes
+- confirm remote access after policy updates
+- review network health before users experience outages
+
+---
+
+## 10. Help desk and IT support operations
+
+### 10.1 Ticketing workflow
+
+A basic support workflow should include:
+
+- ticket creation
+- issue classification
+- owner assignment
+- triage and investigation
+- corrective actions
+- user communication
+- validation of resolution
+- closure and documentation
+
+### 10.2 Triage questions
+
+- One user or multiple users?
+- One office or multiple locations?
+- One service or many services?
+- Was there a recent change?
+- Is it an identity, device, network, or data issue?
+
+### 10.3 Documentation best practices
+
+Good notes include:
+
+- date and time
+- affected user and device
+- location and office/site
+- issue description
+- troubleshooting steps taken
+- findings and root cause
+- final fix
+- validation evidence
+
+---
+
+## 11. Change management and governance
+
+### 11.1 Change control
+
+Every significant change should be documented.
+
+Examples:
+- firewall update
+- switch replacement
+- Wi‑Fi configuration change
+- server patching
+- user permission change
+- backup policy change
+
+Recommended change record:
+
+- reason for change
+- who approved it
+- when it happened
+- expected impact
+- rollback plan
+- verification after change
+
+### 11.2 Governance basics
+
+A business should maintain:
+
+- IT asset inventory
+- device ownership records
+- network documentation
+- backup policy and restore test history
+- permission review schedule
+- contact list for critical vendors and providers
+
+---
+
+## 12. Asset management and lifecycle
+
+### 12.1 Inventory should include
 
 - device name
 - owner
 - department
 - location
-- model and serial
-- warranty status
-- OS version
-- software installed
+- serial number
+- model
+- warranty
+- purchase date
+- software version
 - support status
 
-This matters for replacements, troubleshooting, asset audits, and security verification.
+### 12.2 Lifecycle planning
 
-### 7.2 Workstations and laptops
+Businesses should plan for:
 
-Common issues:
-- slow startup
-- software conflicts
-- driver issues
-- login profile corruption
-- patching delays
-- hardware failures
-- malware or unwanted software
-
-### 7.3 Printers and scanners
-
-Printers are often overlooked but are a major part of business operations.
-
-Typical support topics:
-- queue stuck
-- wrong IP assignment
-- driver mismatch
-- print spooler issues
-- offline status after port changes
-- shared printer configuration
-
-### 7.4 Mobile devices
-
-SMB support often includes:
-- company phones
-- tablets
-- employee personal devices with BYOD policy
-- email clients
-- MDM enrollment
-- device access restrictions
+- computer replacement cycles
+- printer replacement
+- UPS or power protection checks
+- network equipment refresh
+- storage upgrade planning
+- software renewal dates
 
 ---
 
-## 8. Backup, restore, and business continuity
+## 13. Remote access and business continuity
 
-A company cannot function reliably without backup and recovery planning.
+### 13.1 VPN and remote support
 
-### 8.1 Backup fundamentals
+Remote troubleshooting is essential for modern IT support.
 
-Backups protect against:
-- ransomware
-- accidental deletion
-- hardware failure
-- software corruption
-- user mistakes
-- power failure or environmental issues
+Common remote support tasks:
 
-Good backup design includes:
-- what to back up
-- where it is stored
-- how often it runs
-- how long it is retained
-- whether it is encrypted
-- whether restores are tested regularly
+- VPN diagnosis
+- device remote assistance
+- cloud service sign-in issues
+- workstation remote management
+- firewall and route validation for remote users
 
-### 8.2 Recovery metrics
+### 13.2 Business continuity ideas
 
-- RPO: Recovery Point Objective — the amount of data loss acceptable
-- RTO: Recovery Time Objective — how quickly recovery must happen
+Support teams should think about:
 
-These two values guide backup frequency and recovery process design.
-
-### 8.3 Backup targets
-
-Typical targets:
-- local NAS or appliance
-- cloud backup service
-- external disk rotation
-- virtual machine backup tools
-- SaaS data backup services
-
-### 8.4 Disaster recovery
-
-A small business disaster recovery plan may include:
-- restoring a failed server
-- re-establishing Wi‑Fi connectivity
-- re-creating user accounts and group access
-- restoring shared data drives
-- reconnecting VPN or remote access
-- restoring email and core SaaS tools
-
-The key is to prioritize business-critical services first.
+- access to critical services during outage
+- emergency communication method
+- remote work readiness
+- offline workarounds for essential tasks
+- backup restore testing before a real incident
 
 ---
 
-## 9. Security for small and medium businesses
+## 14. Common IT support scenarios
 
-Security is not “just for large companies.” SMBs are often targeted because they may have weaker defenses and more limited IT resources.
+### User cannot access the internet
+Check:
 
-### 9.1 Essential controls
+- Wi‑Fi or cable connection
+- IP address and subnet
+- gateway reachability
+- DNS resolution
+- ISP or outage issue
+- firewall or VPN blocking traffic
 
-- strong password policy or passkeys
-- MFA for admin and remote access
-- endpoint protection
-- patch management
-- software inventory
-- user access reviews
-- secure remote access with policy checks
-- backup verification
-- monitoring and alerting
+### User cannot reach file share
+Check:
 
-### 9.2 Common threats
+- account is active
+- file server is online
+- DNS resolves the share name correctly
+- share permissions are correct
+- VPN is connected if remote
+- mapping or drive letter is valid
 
-- phishing emails
-- password reuse
-- stolen credentials
-- ransomware attacks
-- unpatched devices
-- unauthorized software installs
-- stale user accounts
-- public Wi‑Fi misuse
+### Printer is offline
+Check:
 
-### 9.3 Security operations for SMBs
+- printer IP is valid
+- cable or wireless connection is healthy
+- queue is stuck
+- print server is healthy
+- printer driver matches installed version
+- switch port status is stable
 
-Even in smaller businesses, a limited but consistent process helps:
+### New employee cannot work on day one
+Check:
 
-- verify alerts quickly
-- isolate compromised systems
-- disable suspicious accounts
-- review recent changes
-- preserve evidence before cleanup
-- document lessons learned
+- account created and active
+- email and identity access configured
+- correct group membership
+- device is enrolled or domain joined
+- required software installed
+- printer and shared drive access assigned
+
+### Backup failed overnight
+Check:
+
+- storage target free space
+- connection to backup target
+- credentials valid
+- backup logs for failed job
+- retention policy and schedule
+- restore validation status
+
+### VPN fails for remote user
+Check:
+
+- MFA status
+- VPN profile or client version
+- certificate validity
+- route or firewall policy
+- service outage or endpoint issue
 
 ---
 
-## 10. IT support operations and service culture
+## 15. Troubleshooting workflow
 
-IT support in a small or medium company is not only about fixing technical issues. It is also about keeping people productive and maintaining trust.
+A disciplined troubleshooting approach reduces guesswork.
 
-### 10.1 Ticketing and triage
+### Step 1: Define the symptom
+Ask:
 
-Common triage questions:
-- one user or many users?
-- one site or several?
-- is the problem local or remote?
-- is it a network, identity, endpoint, or data issue?
+- what exact problem is occurring?
+- who is affected?
+- when did it start?
 - what changed recently?
 
-### 10.2 Documentation
-
-Good IT support requires clear documentation.
-
-A solid note should include:
-- date and time
-- affected user and device
-- location
-- symptom or error
-- troubleshooting steps
-- outcome
-- any configuration or access changes
-
-This helps with repeat issues and reduces repeated effort.
-
-### 10.3 SLAs and priorities
-
-Small businesses may not always have formal SLAs, but they still need prioritization:
-
-- critical operations and security incidents first
-- executive or finance systems next
-- office productivity tools after that
-- non-urgent requests later
-
-### 10.4 Change management
-
-Any system change should ideally include:
-- reason for change
-- who approved it
-- expected impact
-- rollback or fallback plan
-- verification after deployment
-
----
-
-## 11. Common small-business IT scenarios
-
-### 11.1 User cannot access the internet
-
-Check:
-- Wi‑Fi or cable connected
-- valid IP address assigned
-- DHCP working
-- gateway reachable
-- DNS answering correctly
-- firewall rule blocking traffic
-- ISP or upstream outage
-
-### 11.2 User cannot reach company file share
-
-Check:
-- account is active
-- share permissions are correct
-- mapping is valid
-- network path is available
-- DNS resolves the file server
-- VPN is connected for remote users
-
-### 11.3 Printer shows offline
-
-Check:
-- printer has valid IP or hostname
-- network cable or Wi‑Fi signal is stable
-- queue is stuck
-- driver is compatible
-- print server or print spooler is healthy
-- switch port is not disabled
-
-### 11.4 VPN fails for remote users
-
-Check:
-- user credentials and MFA status
-- certificate or client configuration
-- allowed network ranges
-- firewall or route policy
-- endpoint health and client logs
-
-### 11.5 Backup failed overnight
-
-Check:
-- disk space on backup target
-- credential validity
-- backup window and schedule
-- connectivity to offsite or cloud target
-- restore test status
-- retention policy and log entries
-
-### 11.6 New employee cannot work on day one
-
-Check:
-- account created
-- correct groups assigned
-- device joined or enrolled
-- VPN access available
-- email and communication tools active
-- standard software installed
-- printer and file share access assigned
-
----
-
-## 12. Troubleshooting workflow for SMB IT teams
-
-A good troubleshooting process prevents guesswork.
-
-### Step 1: Define the problem
-Ask:
-- what is failing exactly?
-- who is affected?
-- did this start recently?
-- what changed last?
-
 ### Step 2: Check the basics
-- power status
-- network connection
-- IP configuration
-- gateway and DNS
-- account state
-- application status
 
-### Step 3: Narrow the scope
-- one user or many?
-- one site or multiple?
-- one service or many?
-- local or remote access?
+- power and physical connectivity
+- network cable or Wi‑Fi state
+- valid IP assignment
+- gateway and DNS status
+- account status and permissions
+- backup or service health
 
-### Step 4: Test likely causes
-Useful examples:
+### Step 3: Reduce the scope
+
+- is it one user or many?
+- is it one office or all locations?
+- is it local, remote, or cloud-based?
+
+### Step 4: Validate likely causes
+
+Useful tools:
+
 - `ping`
 - `tracert` / `traceroute`
 - `nslookup` or `dig`
 - `ipconfig /all`
 - `arp -a`
-- verifying firewall rules
-- checking switch port health
-- reviewing backup logs
+- firewall logs
+- switch port status
+- event logs
+- backup logs
 
 ### Step 5: Apply the smallest correct fix
-Fix the likely cause without unnecessary system-wide changes.
 
-### Step 6: Validate and document
-Confirm the issue is resolved and record the work done.
+Avoid broad changes when a focused repair is enough.
+
+### Step 6: Verify and document
+
+Before closing a ticket, confirm:
+
+- issue is resolved
+- user can access the required service
+- no new problems were caused
+- the change was logged
 
 ---
 
-## 13. Practical tools for SMB support teams
+## 16. Common IT tools and commands
 
-### Network and connectivity tools
+### Windows
+
+- `ipconfig /all`
+- `ping <hostname>`
+- `tracert <hostname>`
+- `nslookup <domain>`
+- `arp -a`
+- `netstat -an`
+- `route print`
+- `systeminfo`
+- `tasklist`
+- `services.msc`
+- `diskpart`
+- `getmac`
+
+### Linux / Unix
+
+- `ip addr`
+- `ifconfig`
 - `ping`
-- `tracert` / `traceroute`
-- `nslookup`
-- `ipconfig`
-- `arp`
-- `netstat`
-- Wi‑Fi analyzer tools
-- switch management interface
-- firewall administration console
+- `traceroute`
+- `dig`
+- `ss -tulpn`
+- `df -h`
+- `du -sh`
+- `mount`
+- `journalctl`
 
-### Endpoint tools
-- device management portal
-- patch management console
-- remote support software
-- antivirus / endpoint detection tools
-- software inventory tools
+### Operational checks
 
-### Data and backup tools
-- backup software dashboard
-- restore validation reports
-- storage health monitoring
-- cloud sync and storage reporting
-
-### Business operations tools
-- ticketing system
-- asset tracking spreadsheet or CMDB
-- documentation portal
-- change log and approval process
+- verify backup status and logs
+- inspect failed jobs
+- check disk utilization and room for growth
+- confirm patching status
+- review access logs and firewall events
+- validate restore tests
 
 ---
 
-## 14. Recommended SMB architecture patterns
+## 17. Frequently missing but important topics
 
-### Pattern A: Simple office network
-- ISP router
-- firewall
-- managed switch
-- Wi‑Fi access points
-- one or two file servers
-- standard endpoint management
-- cloud email and backup
+These are the areas that often make a README truly comprehensive for SMB IT support:
 
-### Pattern B: Hybrid office + cloud-first
-- local LAN and firewall
-- cloud identity and productivity platforms
-- limited local file services
-- SaaS backup and remote access
-- endpoint management for all devices
+- cabling and physical patching basics
+- UPS and power protection
+- rack and server room organization
+- vendor and ISP escalation process
+- procurement and equipment lifecycle
+- license tracking and software compliance
+- remote support and endpoint management
+- SaaS administration and user provisioning
+- backup restore testing and validation
+- cybersecurity awareness training
+- audit readiness and access reviews
+- escalation matrix and ownership model
+- emergency communication plan for outages
+- user communication templates for incidents
 
-### Pattern C: Small branch office setup
-- branch firewall and VPN
-- core office services accessible remotely
-- local print and file sharing
-- central backup and identity management
+These are the details that turn a basic technology list into a realistic operational catalog.
 
 ---
 
-## 15. Typical support responsibilities in SMB IT
+## 18. IT support glossary
 
-A SMB IT specialist may regularly handle:
-
-- user setup and password resets
-- Wi‑Fi and printer issues
-- laptop repair and replacement coordination
-- server reboot and health checks
-- office internet troubleshooting
-- shared folder permission problems
-- vendor coordination for ISP, hardware, or internet issues
-- patching and antivirus oversight
-- backup job monitoring
-- user onboarding and offboarding
-- access review and business continuity testing
-
-This is why broad technical understanding matters so much in smaller companies.
-
----
-
-## 16. Common standards and best practices
-
-### Standard software and equipment
-A well-run small company often uses a manageable standard:
-
-- standard laptop and desktop models
-- limited device types for easier support
-- standard application stack
-- consistent patching schedule
-- approved security tools
-- limited custom workarounds
-
-### Asset management
-Track:
-- who owns the device
-- where it is located
-- when it was deployed
-- software license status
-- support warranty status
-- replacement lifecycle
-
-### Access review cadence
-Perform periodic reviews of:
-- departmental file permissions
-- admin rights
-- shared mailbox access
-- VPN access
-- cloud storage sharing
-- former employee access remains
-
----
-
-## 17. Governance and documentation checklist
-
-A company IT team should keep track of:
-
-- network diagrams
-- device inventory
-- IP address ranges
-- switch and AP inventory
-- backup schedule and restore test results
-- firewall rule set and change log
-- user access review records
-- software licensing and support status
-- business continuity contacts
-- escalation procedures
-
----
-
-## 18. Learning path for SMB IT support
-
-### Level 1: Fundamentals
-- networking basics
-- IP addressing and DHCP
-- DNS and gateway concepts
-- laptop and printer troubleshooting
-- basic file permissions
-
-### Level 2: Business operations
-- backup and restore planning
-- identity and MFA support
-- remote access troubleshooting
-- Wi‑Fi troubleshooting
-- inventory and documentation
-
-### Level 3: System support
-- server basics
-- virtualization or VM support
-- storage concepts
-- patching and endpoint management
-- policy enforcement and security basics
-
-### Level 4: Business continuity and governance
-- DR planning
-- access review and audits
-- service continuity documentation
-- vendor coordination and escalation
-- operational improvement and cost control
-
----
-
-## 19. Glossary for SMB IT support
-
-### LAN
-Local Area Network; network inside the office or site.
-
-### WAN
-Wide Area Network; connecting offices or external sites.
-
-### VLAN
-Virtual local area network; segmentation inside the same switch infrastructure.
-
-### DHCP
-Dynamic Host Configuration Protocol; automatic IP assignment.
+### Active Directory
+A directory service used to manage users, computers, and permissions in Windows environments.
 
 ### DNS
-Domain Name System; translates names to IPs.
+Domain Name System; resolves names into IP addresses.
+
+### DHCP
+Dynamic Host Configuration Protocol; automatically assigns network settings.
+
+### VLAN
+Virtual local area network; logically separates traffic inside a network.
+
+### Firewall
+A network control that filters traffic based on policy.
+
+### NAS
+Network-attached storage used for shared file access.
+
+### SAN
+Storage area network for block-based storage used by servers and apps.
 
 ### VPN
-Virtual Private Network; encrypted remote or inter-site access.
+Virtual private network for secure remote or inter-site connectivity.
+
+### MFA
+Multi-factor authentication; adds an additional sign-in verification step.
 
 ### RPO
-Recovery Point Objective; acceptable amount of data loss.
+Recovery Point Objective; acceptable loss of data.
 
 ### RTO
-Recovery Time Objective; acceptable restoration time.
-
-### Endpoint
-Any connected user device such as a laptop, desktop, printer, or phone.
+Recovery Time Objective; acceptable recovery time.
 
 ### CMDB
-Configuration Management Database; inventory and configuration tracking.
+Configuration management database; system inventory and configuration tracking.
 
 ### Ticket
 A tracked support request or incident record.
@@ -828,57 +882,99 @@ A tracked support request or incident record.
 ### Patch
 A software update that fixes defects or closes vulnerabilities.
 
-### MFA
-Multi-factor authentication; adds an extra verification step.
+---
+
+## 19. Learning roadmap for business IT support
+
+### Beginner level
+
+- networking basics
+- IP addressing and DHCP
+- DNS and basic routing
+- printer and desktop support
+- file share permissions and user lifecycle
+
+### Intermediate level
+
+- Wi‑Fi troubleshooting
+- firewall basics
+- Active Directory or cloud identity
+- backup and restore fundamentals
+- VPN support
+- endpoint security
+
+### Advanced level
+
+- virtualization and storage design
+- network segmentation and VLAN planning
+- patching automation
+- monitoring and alerting
+- business continuity planning
+- incident response coordination
 
 ---
 
-## 20. Final guidance for practical IT support
+## 20. Recommended SMB support checklist
 
-The most effective SMB IT support teams follow a simple operating principle:
+Use this as a practical operating checklist:
 
-- know the business context
-- understand the network path
-- validate the user and device state
-- confirm permissions and access
-- protect business data
-- test recovery before it is needed
-- document everything clearly
-
-The best IT support professionals are not just “fixers.” They are operational partners who keep company technology aligned with real business needs.
-
----
-
-## 21. Summary
-
-Company computer networking and data management are the backbone of dependable business operations. In a small-to-medium company, this area includes:
-
-- connectivity and network health
-- workstation and mobile support
-- user accounts and permissions
-- secure access and MFA
-- safe file sharing and storage
-- backup and restore strategy
-- security hygiene and monitoring
-- clear troubleshooting and operational documentation
-
-This is the foundation of reliable IT support in any growing business.
+- network and internet connectivity verified
+- DHCP and DNS healthy
+- user account active and permissions correct
+- file access and shared storage available
+- endpoint patched and protected
+- backup status confirmed
+- change documented and approved
+- issue verified as resolved before closure
 
 ---
 
-## 22. Suggested future additions
+## 21. Final principle: support with structure
 
-This catalog can continue to grow with:
+The most effective IT support teams are not just reactive technicians. They are structured problem solvers who understand:
 
-- a basic network diagram section
-- common SMB equipment list
-- standard operating procedure templates
-- troubleshooting decision trees
-- hardware inventory form
-- backup checklist
-- security audit checklist
-- onboarding/offboarding checklist
-- end-user support guide
+- how the network works
+- how users access business systems
+- how files and backups are protected
+- how identity and permissions affect productivity
+- how to verify a fix before closing a ticket
+- how to document and improve the environment over time
 
-If you want, this repository can be expanded into a more complete operational handbook for business IT support and systems administration.
+This is the difference between ad hoc troubleshooting and reliable business technology operations.
+
+---
+
+## 22. Summary
+
+Company computer networking and data management are foundational capabilities in modern business operations.
+
+For a small-to-medium business, the real goal is to maintain:
+
+- stable connectivity
+- reliable endpoint support
+- correct user access
+- protected and accessible data
+- backup and recovery readiness
+- secure and well-managed business systems
+
+This catalog is intended to serve as a practical, detailed reference for that work.
+
+---
+
+## 23. Suggested future repository sections
+
+To make this project even richer, the next sections could include:
+
+- network diagram examples
+- troubleshooting decision tree
+- common SMB hardware inventory spreadsheet
+- onboarding checklist for new employees
+- offboarding checklist for leaving staff
+- backup validation checklist
+- security hygiene checklist
+- change log template
+- support ticket template
+- disaster recovery planning template
+
+These additions would turn this repository into a true operational playbook for company IT support.
 
