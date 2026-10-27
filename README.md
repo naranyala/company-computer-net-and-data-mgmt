@@ -1,653 +1,471 @@
 # Company Computer Networking and Data Management Catalog
 
-A practical field guide for IT support teams, help desk engineers, system administrators, and technical operations staff working in small-to-medium business environments.
+A practical, support-focused catalog for IT professionals who keep business systems running: help desk technicians, desktop support specialists, network administrators, system administrators, and small-business IT teams.
 
-This catalog focuses on the real-world technologies that keep a company running: office networking, user connectivity, shared data access, backups, endpoints, security basics, and IT support workflows. It is designed to be clear, operational, and useful when things go wrong.
+This repository is a field guide to the technologies behind office connectivity, user access, shared data, backups, endpoint health, and everyday IT support. The focus is not abstract theory alone—it is the real work of keeping staff productive, devices connected, permissions correct, and business data available.
 
----
+## Why this catalog exists
 
-## Why this matters
+In most companies, the biggest IT issues are repetitive and recognizable:
 
-In a business environment, the most common IT problems are usually not mysterious. They usually come down to a few patterns:
+- a workstation cannot reach the network
+- Wi‑Fi is unstable in one office area
+- a user cannot access a shared folder
+- a printer is offline or stuck in a queue
+- a VPN connection fails for remote users
+- a server is slow or unavailable
+- backups failed overnight
+- account permissions are wrong after a role change
 
-- a user cannot connect to the network
-- a printer is offline or unreachable
-- file shares are not accessible
-- a user has the wrong access rights
-- a backup job failed
-- a device has a bad IP configuration or DNS issue
-- a VPN connection is failing
-- a server or service is slow, unavailable, or misconfigured
+Strong IT support depends on understanding how the company’s systems connect and fail.
 
-When a support team understands the structure of company networks and data systems, they can diagnose faster and make better decisions under pressure.
+## What this catalog covers
 
----
+- network basics and office connectivity
+- computer and device support
+- user identity, authentication, and permissions
+- file storage, backups, recovery, and retention
+- endpoint security and patching
+- troubleshooting workflows in a business setting
+- common IT support scenarios and operational habits
 
-## IT support context
+## Core IT support layers
 
-Small-to-medium business IT support often includes all of the following:
-
-- user onboarding and offboarding
-- laptop and desktop troubleshooting
-- Wi‑Fi and office network issues
-- printer support
-- email and collaboration service issues
-- VPN and remote access support
-- file share permissions and data access
-- backups, restore testing, and retention
-- patching and endpoint management
-- security awareness and access hygiene
-- asset management and change tracking
-
-A strong IT support engineer does not need to know every product or vendor feature by memory. They need to understand the core patterns of how business technology systems connect and fail.
-
----
-
-## The main layers of a company IT environment
-
-### 1. Network layer
-
-This is the communication path that connects devices together.
-
-Topics include:
-- IP addressing
-- subnets
-- routing
-- gateways
-- DNS
-- DHCP
-- switches
-- routers
-- firewalls
-- Wi‑Fi
-- VPNs
-- VLANs
-- ISP and WAN connectivity
-
-### 2. Endpoint layer
-
-This is the layer where users actually work.
-
-Topics include:
-- laptops and desktops
-- mobile devices
-- printers and scanners
-- conference room equipment
-- user login and profile issues
-- software installation and updates
-- workstation performance problems
-
-### 3. Identity and access layer
-
-This is the layer that decides who can access what.
-
-Topics include:
-- user accounts
-- authentication
-- MFA
-- groups and permissions
-- shared folder access
-- VPN access
-- password resets
-- account lockouts
-- user lifecycle management
-
-### 4. Data layer
-
-This is where the company’s business information lives.
-
-Topics include:
-- file servers
-- NAS devices
-- cloud storage
-- document collaboration systems
-- backups
-- snapshots
-- retention policies
-- archival and deletion procedures
-
-### 5. Security layer
-
-This layer protects the network, users, and data.
-
-Topics include:
-- endpoint protection
-- patching
-- access reviews
-- firewall configuration
-- phishing awareness
-- MFA enforcement
-- secure remote access
-- audit and logging
-
-### 6. Operations and support layer
-
-This is how IT keeps everything reliable over time.
-
-Topics include:
-- ticketing
-- triage
-- incident response
-- change management
-- documentation
-- validation and testing
-- escalation and communication
+| Layer | What it includes | Typical IT support tasks |
+| --- | --- | --- |
+| Network layer | switches, routers, Wi‑Fi, firewalls, VLANs, IP addressing, DNS, DHCP | connectivity checks, ISP issues, AP coverage, switch ports |
+| Endpoint layer | desktops, laptops, printers, mobile devices, conference equipment | login issues, driver problems, slow devices, queue errors |
+| Identity layer | users, groups, accounts, MFA, access policies | password resets, account lockouts, permission review |
+| Data layer | file servers, NAS, cloud storage, shared drives, backups | restore testing, storage capacity, access problems |
+| Security layer | patching, endpoint protection, access hygiene, audits | phishing response, MFA enforcement, policy validation |
+| Operations layer | tickets, documentation, change control, escalation | triage, root cause analysis, incident communication |
 
 ---
 
-## Core networking concepts
+## 1. Company network architecture
 
-### IP address
+A business network is usually a combination of the following:
 
-An IP address identifies a device on a network.
+- local area network (LAN)
+- wireless access points (WAPs)
+- routers and internet connectivity
+- switches and patching
+- firewall and security rules
+- VPN for remote users or branch offices
+- internal services such as file servers, print servers, and identity services
+
+### Typical office network components
+
+- modem or ISP edge router
+- firewall or secure gateway
+- core or distribution switch
+- access switches in office areas
+- Wi‑Fi access points
+- domain controllers or identity services
+- file server or storage appliance
+- printers and endpoint devices
+
+### Common networking concepts
+
+#### IP address
+An IP address identifies a device on a network. A correct IP is required for communication on the LAN and beyond.
 
 Examples:
-- 192.168.1.40
-- 10.0.0.12
+- `192.168.1.20`
+- `10.10.10.50`
 
 Support relevance:
-- confirms whether a device has a valid network address
-- helps detect conflicts and wrong configuration
-- allows support teams to check whether a device is on the right subnet
+- no IP implies connectivity or DHCP problem
+- duplicate IP can break traffic
+- wrong subnet can isolate a machine from the rest of the office
 
-### Subnet mask
+#### Subnet mask
+A subnet mask tells devices which part of the IP address is the network and which part is the host.
 
-A subnet mask separates the network portion of an IP address from the host portion.
+Why it matters:
+- same-subnet devices can talk directly
+- different subnets need a gateway
+- misconfiguration often causes unusual “I can ping some things but not others” problems
 
-Why this matters:
-- devices on the same subnet can usually communicate directly
-- different subnets require a gateway or router
-- wrong subnet settings often create confusing connectivity problems
+#### Default gateway
+A gateway is the device that forwards traffic from the local network to other networks such as the internet or another office site.
 
-### Default gateway
+Support symptom:
+- client has an IP but no internet access
+- gateway is unreachable or wrong
 
-The default gateway is the device that forwards traffic from the local network to other networks such as the internet or another office site.
+#### DNS
+DNS resolves names like `fileserver` or `mail.company.com` into IP addresses.
 
-If a device has an IP but cannot reach its gateway, it may have local connectivity but no real outbound access.
+Common symptoms:
+- users cannot reach internal services by name
+- websites do not load
+- email or login flows fail
 
-### DNS
+#### DHCP
+DHCP automatically assigns IP, subnet, gateway, and DNS information.
 
-DNS converts names such as `fileserver` or `mail.company.com` into IP addresses.
+Typical support issues:
+- no address lease issued
+- duplicate or stale leases
+- wrong DNS or gateway delivered
+- rogue DHCP device on the network
 
-Typical symptoms of DNS problems:
-- websites or apps fail to resolve
-- users cannot reach the file server by name
-- email fails or login flows break
-- internal services become unreachable
-
-### DHCP
-
-DHCP automatically gives devices an IP address, subnet mask, default gateway, and DNS settings.
+#### Switches
+Switches connect devices in a LAN and move traffic inside the local network.
 
 Common issues:
-- no IP address assigned
-- duplicate address conflict
-- stale lease after network changes
-- wrong DNS or gateway assignment
-- rogue DHCP server on the network
-
-### Router
-
-A router forwards traffic between networks.
-
-Support tasks include:
-- validating the link status
-- confirming the gateway is reachable
-- checking whether the upstream path is working
-- verifying NAT, firewall, or routing policies
-
-### Switch
-
-A switch connects devices inside a LAN and forwards traffic based on their addresses.
-
-Support concerns:
-- port dead or disconnected
+- port disabled
+- bad cable or patching
 - wrong VLAN assignment
-- bad cable or patch connection
-- switch health and uptime
+- switch port flapping
 
-### Firewall
+#### Routers and firewalls
+Routers connect networks. Firewalls restrict or permit traffic based on policy.
 
-A firewall controls traffic based on rules and policy.
+Support tasks:
+- validate interface status
+- confirm default route exists
+- review rule changes
+- inspect VPN or remote access service behavior
 
-Important questions:
-- Is traffic being blocked intentionally?
-- Did a recent rule change break access?
-- Is a VPN or remote user being prevented from reaching a service?
+#### Wi‑Fi
+Wireless access is often the single largest source of user complaints.
 
-### Wi‑Fi
-
-Wi‑Fi is often the most common source of user complaints in office environments.
-
-Typical issues:
+Typical problems:
 - weak signal
-- wrong SSID
-- poor access point placement
-- authentication failure
-- channel interference
-- roaming or handoff problems
-- guest network segmentation issues
+- roaming issues
+- interference
+- corrupted client profiles
+- wrong SSID or encryption settings
+- AP health or channel overlap
 
-### VPN
+#### VPN
+A VPN provides secure access for users working remotely or connecting between offices.
 
-A VPN creates a secure connection between a remote user or branch location and the company network.
+Common support checks:
+- MFA status
+- VPN profile health
+- client certificate validity
+- route configuration
+- firewall or NAT behavior
 
-Typical support tasks:
-- MFA verification
-- VPN client troubleshooting
-- certificate check
-- route and firewall validation
-- verifying access to internal resources
+#### VLAN
+A VLAN divides traffic logically even if devices share the same physical switch.
 
-### VLAN
-
-A VLAN separates traffic logically, even when devices are connected to the same physical switch.
-
-Why this matters:
-- guest Wi‑Fi stays separate from production traffic
-- voice traffic and data traffic can be separated
-- user, management, and server networks can be isolated
-
-### WAN and ISP connectivity
-
-A WAN or ISP link connects office locations or provides internet access to the company.
-
-Problems may include:
-- outages from the service provider
-- degraded bandwidth
-- router failures
-- internet link instability
-- branch office connectivity loss
+Why it matters:
+- guest Wi‑Fi stays isolated from production traffic
+- voice and data can be separated
+- server, admin, and user networks can be grouped cleanly
 
 ---
 
-## Data management fundamentals
+## 2. Data management and company information flow
 
-### File server
+A company’s data is usually spread across several locations and systems:
 
-A file server stores shared company data that many users need to access.
+- workstations and laptops
+- shared file servers
+- NAS devices
+- cloud services such as OneDrive or SharePoint
+- email and collaboration platforms
+- database servers and application storage
+- backup appliances and archive systems
 
-Common support tasks:
-- checking file share availability
-- validating user permissions
-- monitoring storage capacity
-- handling slow access or offline shares
-- restoring files from backup or snapshot
+### File servers and shared storage
+A file server hosts the shared data users need to access every day.
 
-### Shared drives and permissions
+Typical tasks:
+- checking share availability
+- validating permissions
+- monitoring disk usage
+- restoring files from backup
+- verifying performance during business hours
 
-A large part of IT support is making sure people can access the right folders and not too much.
-
-Support issues include:
-- user cannot open a shared folder
-- a user has access to the wrong department data
-- a file share is missing after a server change
-- permissions are too broad or outdated
-- a user retains access after role changes
+### Permissions and access control
+The right access model is essential to operational stability.
 
 Best practice:
-- favor group-based permissions over user-by-user assignments
-- apply least privilege
-- regularly review access rights
-- remove stale access during employee changes
+- assign permissions through groups
+- follow least privilege
+- remove stale access when roles change
+- review access regularly
 
 ### NAS and SAN
+- NAS: network-attached storage, commonly used for file-based sharing
+- SAN: storage area network, typically used by servers and applications with block-level storage
 
-- NAS = network-attached storage, usually file-based
-- SAN = storage area network, usually block-based and used by servers
-
-Support relevance:
-- storage health
-- volume capacity
-- performance issues
+Support concerns:
+- capacity warnings
 - failed drives
-- restoration and redundancy checks
+- degraded RAID status
+- snapshots and backups not completing
 
-### Backups and restore
+### Backup and restore
+Backups protect against accidental deletion, malware, hardware failure, or outages.
 
-Backups are essential for business continuity.
+Key backup questions:
+- what is being backed up?
+- where is it stored?
+- how often does it run?
+- how long is it retained?
+- has a restore been tested recently?
 
-Key areas:
-- what is being backed up
-- where the backups are stored
-- how often they run
-- how long data is retained
-- whether the restore process has been tested
+### Recovery terminology
 
-Typical backup targets:
-- local backup appliance
-- NAS or storage array
-- cloud backup service
-- external disk rotation
-- virtual machine backup systems
+- RPO: Recovery Point Objective; how much data loss is acceptable
+- RTO: Recovery Time Objective; how long recovery may take
 
-### RPO and RTO
+These values help determine backup frequency, redundancy, and recovery planning.
 
-- RPO = Recovery Point Objective: how much data can be lost
-- RTO = Recovery Time Objective: how quickly services must be restored
+### Cloud storage and collaboration
+Modern businesses commonly use:
 
-These are key business continuity metrics used when planning data protection.
-
-### Snapshots and versioning
-
-Snapshots preserve a point-in-time state of data and are often used to restore earlier versions.
-
-Useful for:
-- restoring deleted files
-- recovering a virtual machine
-- reverting a database to a known-good state
-- reducing recovery time after accidental changes
-
-### Retention and archival
-
-Retention policies determine how long company data must be kept before it is archived or deleted.
-
-This matters for:
-- compliance
-- audit readiness
-- storage optimization
-- legal and operational retention requirements
-
-### Cloud storage
-
-Business teams increasingly use:
 - OneDrive
 - SharePoint
 - Google Drive
 - Dropbox
-- other SaaS storage platforms
+- SaaS document platforms
 
-Support attention areas:
-- sync issues
+Support issues include:
+- sync errors
 - file conflicts
-- storage quota limits
-- stale access rights
-- security and sharing restrictions
+- quota limits
+- expired sharing links
+- permission mismatches
 
 ---
 
-## Identity and access fundamentals
+## 3. Identity, access, and user support
 
-### User accounts
+User access is central to business operations. If the identity layer fails, users cannot log in, access files, or use the right services.
 
-A user account is the primary identity used for login, file access, email, apps, and policy enforcement.
-
-Problems often include:
-- account is disabled
-- password expired or needs reset
-- account lockout due to failed sign-ins
-- MFA prompt rejected or expired
-- no permission to access the right data
+### User accounts and authentication
+Common problems:
+- disabled account
+- expired password
+- lockout after repeated failed sign-ins
+- MFA approval issues
+- stale account remaining after employee departure
 
 ### Groups and permissions
+Groups are the most common way to assign access consistently.
 
-Groups are a standard way to assign access more efficiently and consistently.
+Good practice:
+- team-based groups
+- standard access templates
+- removal of excess rights
+- periodic access review
 
-Good access model:
-- team-based group assignment
-- least privileges
-- regular audits
-- controlled changes
+### MFA and security checks
+Multi-factor authentication helps secure login flows, but it can also generate support work.
 
-### MFA
-
-Multi-factor authentication adds a second layer of verification.
-
-Common support issues:
+Typical ticket causes:
+- authenticator not available
+- lost device
 - approval not received
-- device lost or not enrolled
-- wrong authenticator app setup
-- users blocked after security policy changes
+- user changed phone number
+- silent policy update requiring re-registration
 
 ### Onboarding and offboarding
-
-IT support is critical during employee lifecycle events.
+IT support is often measured by how smoothly user lifecycle changes happen.
 
 Onboarding includes:
-- account setup
-- email access
-- device assignment
-- VPN profile
-- shared drive access
-- printer access
+- account creation
+- email setup
+- device delivery
+- VPN setup
 - software installation
+- access to shared drives and printers
 
 Offboarding includes:
-- account disablement
-- data access review
-- device return or wipe
-- mail and SaaS removal
-- audit of permissions and licenses
+- disabling accounts
+- reviewing permissions
+- collecting equipment
+- removing SaaS access
+- verifying data retention and compliance requirements
 
 ---
 
-## Endpoint support essentials
+## 4. Endpoint and workstation support
+
+Most day-to-day support work happens at the endpoint layer.
 
 ### Workstations and laptops
-
-Most day-to-day support issues involve desktop systems.
-
 Common issues:
-- slow boot times
-- software conflicts
-- driver problems
-- printer issues
-- file access problems
-- login and profile issues
-- patching not applied
+- slow startup
+- application conflicts
+- bad drivers
+- patching issues
+- profile corruption
+- login failures
 
 ### Printers and scanners
-
-Printers are a frequent source of tickets in office environments.
+Printers are an almost universal source of office support problems.
 
 Typical causes:
-- wrong IP address
+- wrong IP or hostname
 - queue stuck
 - driver mismatch
-- spooler errors
-- patch cable or switch port issue
-- Wi‑Fi connectivity problem
+- spooler service issue
+- switch or patch cable fault
+- Wi‑Fi print device connectivity issue
 
 ### Mobile devices
+Support often includes smartphones and tablets.
 
-Support often includes smartphones and tablets:
+Areas of support:
 - email setup
 - MFA enrollment
-- VPN access
-- device management
-- lost or stolen device process
-- remote wipe and security procedures
+- mobile device management
+- lost device process
+- VPN configuration
+- secure wipe and access revocation
 
 ---
 
-## Backup and business continuity concepts
+## 5. Security and governance basics
 
-### Backup jobs
+IT support is not just “fixing computers.” It is also about protecting business systems and maintaining operational discipline.
 
-A backup job is the automated process of copying business data to a secure destination.
+### Essential security habits
+- least privilege access
+- patching and update compliance
+- strong MFA enforcement
+- secure remote access
+- software inventory
+- device inventory
+- log review and alert triage
+- change tracking and documentation
 
-Support tasks include:
-- checking job success or failure
-- reviewing logs
-- verifying retention periods
-- testing restore operations
-- confirming destination health
-
-### Recovery objectives
-
-- RPO = how much data can be lost
-- RTO = how long the business can survive without the service
-
-These objectives drive design decisions for backup and disaster recovery.
-
-### Disaster recovery
-
-A disaster recovery plan prepares an organization to restore operations after an outage, cyber incident, or major failure.
-
-This can include:
-- server recovery procedures
-- offsite backup data
-- failover systems
-- remote office continuity
-- communication plans
+### Support practices that create risk
+- granting broad access “just to solve the issue”
+- shared local admin accounts without accountability
+- undocumented changes
+- ignoring alerts that seem minor
+- no validation of restore or backup process
 
 ---
 
-## Common IT support scenarios
+## 6. Real-world troubleshooting workflow
+
+A reliable support process is more important than guessing.
+
+### Step 1: Determine the scope
+Ask:
+- one user or many?
+- one office or multiple offices?
+- one service or many?
+- local network issue or remote user issue?
+
+### Step 2: Check the basics
+- device is powered on
+- network cable or Wi‑Fi connection is active
+- DHCP has assigned an IP
+- gateway is reachable
+- DNS resolves names
+- username and password are valid
+- required service is online
+
+### Step 3: Classify the problem
+Possible categories:
+- connectivity problem
+- device configuration issue
+- access or permissions issue
+- storage or file share issue
+- service outage
+- security policy issue
+
+### Step 4: Test the likely cause
+Useful checks:
+- `ping`
+- `tracert` / `traceroute`
+- `nslookup` / `dig`
+- `ipconfig /all`
+- switch port status
+- firewall rule review
+- shared folder permission check
+- VPN connection state
+
+### Step 5: Document clearly
+Support notes should include:
+- when the issue started
+- affected user or department
+- device name and location
+- error message or symptom
+- tests performed
+- changes made and their result
+
+### Step 6: Verify resolution
+Before closing a ticket, confirm:
+- the original issue is gone
+- the user can access the needed resource
+- the fix did not cause a new problem
+- documentation is updated
+
+---
+
+## 7. Common IT support scenarios
 
 ### User cannot access the internet
-
 Check:
-- device is connected to Wi‑Fi or LAN
-- valid IP address assigned
-- gateway reachable
-- DNS resolving properly
-- firewall or VPN policy blocking traffic
-- ISP or upstream communication issue
+- Wi‑Fi or LAN link state
+- DHCP lease and IP validity
+- gateway reachability
+- DNS resolution
+- firewall or VPN policy
+- ISP outage or upstream issue
 
-### User cannot reach the file server
-
+### User cannot reach a shared file server
 Check:
-- DNS name resolves
-- network path reachable
+- DNS resolution
+- network path
+- server availability
 - correct permissions
-- file server online
-- VPN connected if remote
-- share mapping exists and is still valid
+- VPN or remote access state
+- mapped drive definition
 
-### Office wifi is unstable
-
+### Office Wi‑Fi is unstable
 Check:
-- AP placement and coverage
+- AP location and coverage
 - channel interference
-- client roaming behavior
-- switch port or AP health
-- DHCP and connectivity errors
+- roaming behavior
+- switch port and AP health
+- client DHCP behavior
 - recent configuration changes
 
 ### Printer is offline
-
 Check:
-- correct printer IP or hostname
-- port status on switch or wall jack
+- printer IP or hostname
+- switch port status
 - print server availability
+- queue state
 - driver version
-- queue stuck or drained
 - IP conflict or network disconnect
 
-### New employee cannot work on day one
-
+### New employee cannot start work on day one
 Check:
-- account created and active
-- correct group memberships
-- device joined to domain or enrolled
-- email and VPN access configured
-- required software installed
-- printer and network shares mapped
+- active account
+- correct access groups
+- device enrollment or domain join
+- email and VPN setup
+- required software
+- printer and shared drive access
 
 ### Backup failed overnight
-
 Check:
-- storage target free space
-- backup credentials valid
-- connectivity to backup server
-- retention policy settings
-- failed job log details
-- restore tests or snapshot health
+- destination storage free space
+- credentials and connectivity
+- job log details
+- retention policy
+- failed restore test
+- snapshot or appliance health
 
 ---
 
-## Troubleshooting workflow
+## 8. Tools and common commands
 
-When a problem appears, the most effective support method is to isolate the source gradually.
-
-### Step 1: determine scope
-
-Ask:
-- one user or many?
-- one office or multiple?
-- one app or whole network?
-- local or remote access?
-
-### Step 2: validate the basics
-
-- the device has power
-- network cable or Wi‑Fi is connected
-- DHCP issued an IP
-- the gateway responds
-- DNS resolves names
-- the user account is active
-- the service is online
-
-### Step 3: classify the issue
-
-Possible categories:
-- network connectivity issue
-- device configuration issue
-- identity/access issue
-- file server or storage issue
-- application or service issue
-- security or policy issue
-
-### Step 4: test likely causes
-
-Useful checks:
-- ping
-- traceroute or tracert
-- nslookup or dig
-- verifying DHCP lease details
-- checking switch port status
-- confirming VPN state
-- verifying file share permissions
-
-### Step 5: document evidence
-
-A solid support note should include:
-- the time the issue started
-- location and device name
-- error description
-- steps attempted
-- results of tests
-- whether any change was made
-
-### Step 6: verify resolution
-
-Before closing the ticket, confirm that:
-- the original issue is resolved
-- the user can access the needed service
-- no additional side effects were introduced
-- the change was documented
-
----
-
-## Security and governance reminders
-
-Even in day-to-day IT support, security is operationally important.
-
-Key concepts:
-- least privilege
-- patched endpoints
-- MFA enforcement
-- login audits
-- secure remote access
-- device inventory
-- software inventory
-- permission review
-- incident reporting
-
-Bad support habits include:
-- broad user access granted “just to fix it”
-- shared local admin accounts without tracking
-- no documentation for device changes
-- ignored security alerts
-- unvalidated backups
-
----
-
-## Common IT tools and commands
-
-### Windows
-
+### Windows commands
 - `ipconfig /all`
 - `ping <hostname>`
 - `tracert <hostname>`
@@ -659,8 +477,7 @@ Bad support habits include:
 - `tasklist`
 - `services.msc`
 
-### Linux / Unix
-
+### Linux / Unix commands
 - `ip addr`
 - `ifconfig`
 - `ping`
@@ -671,143 +488,161 @@ Bad support habits include:
 - `du -sh`
 - `mount`
 
-### Storage and backup checks
-
+### Operational checks
 - verify backup completion logs
-- check retention windows
-- check restore validation
-- inspect expired or failed jobs
-- monitor disk capacity and usage growth
+- review failed job history
+- inspect retention windows
+- validate restore jobs
+- monitor storage capacity and growth
 
 ---
 
-## Support terminology glossary
+## 9. Quick reference glossary
 
 ### Active Directory
-A directory service used to manage users, computers, and permissions in Windows-based environments.
+A directory service used to manage users, computers, and permissions in Windows environments.
 
 ### DHCP
-Automatic IP configuration used by clients to obtain network settings.
+Automatic IP assignment for network clients.
 
 ### DNS
-Name resolution service that maps names to IP addresses.
+Name resolution service that maps hostnames to IP addresses.
 
 ### Endpoint
-Any user device or system attached to the network.
+Any device connected to the network, such as a laptop, workstation, or mobile device.
 
 ### Firewall
-A security control used to filter inbound and outbound traffic.
+A security control that filters traffic between networks and systems.
 
 ### NAS
-Network-attached storage, usually used for shared files.
+Network-attached storage used for shared file access.
 
 ### VPN
-A secure tunnel used to connect remote users or sites to the company network.
+A secure tunnel used by remote users or branch offices to access internal networks.
 
 ### Ticket
-A tracked support request used to organize work and resolution history.
+A tracked work item that documents a user issue, resolution steps, and outcome.
 
 ### Patch
-A software update that fixes bugs or security vulnerabilities.
+A software update that fixes problems or closes vulnerabilities.
 
 ### Snapshot
-A restore point saved at a specific time.
+A restore point captured at a specific time.
 
-### Permissions
-Rules that determine who can access a file, folder, or system resource.
+### Permission
+A rule that determines whether a user or group can access a resource.
 
 ### Authentication
 The process of verifying a user or device identity.
 
 ### RTO / RPO
-Recovery time objective and recovery point objective; used in continuity planning.
+Recovery time objective and recovery point objective; core business continuity measures.
 
 ---
 
-## Recommended learning path for company IT support
+## 10. Learning roadmap for business IT support
 
-### Step 1: networking basics
-
+### Phase 1: Networking basics
 Learn:
-- IPs and subnets
+- IP addressing and subnets
 - DNS and DHCP
-- gateways and routers
+- gateways and routes
 - Wi‑Fi basics
-- switch and firewall fundamentals
+- switches and VLANs
+- firewall fundamentals
 
-### Step 2: user and device support
-
+### Phase 2: User and device support
 Learn:
-- Windows and Mac troubleshooting
-- account setups
+- desktops and laptops
+- login and profile issues
 - printer support
-- shared drive access
-- VPN setup and troubleshooting
+- VPN troubleshooting
+- mobile device basics
 
-### Step 3: file and data management
-
+### Phase 3: Storage and data management
 Learn:
-- file share permissions
-- backup routines
-- restore processes
+- file permissions
+- backup scheduling and restore testing
 - retention policies
-- cloud storage access
+- NAS and cloud storage access
+- capacity monitoring
 
-### Step 4: security and operations
-
+### Phase 4: Security and operations
 Learn:
-- MFA
-- password resets
-- account lockouts
-- patching
-- access review
-- ticket workflow and documentation
+- MFA enforcement
+- account lockout investigation
+- access review and clean-up
+- patch compliance
+- incident communication and documentation
 
 ---
 
-## A practical mindset for IT support
+## 11. Support mindset to remember
 
-The best support engineers are not just “tech people.” They are problem solvers who understand business impact.
+The best IT support professionals solve problems with structure.
 
-They know how to ask:
+They ask:
 - what changed?
 - who is affected?
-- what service is failing?
-- what layer is responsible?
-- what is the most likely cause?
+- which service is failing?
+- which layer is responsible?
+- is this a network, identity, endpoint, or data issue?
 - what is the safest quick fix?
-- how do we verify it worked?
+- how do we confirm it is actually resolved?
 
-This is what separates reactive troubleshooting from reliable support.
+This mindset is what separates reactive troubleshooting from dependable IT operations.
 
 ---
 
-## Quick summary
+## 12. Quick summary
 
-Company computer networking and data management are the backbone of business IT support. The main responsibility of an IT support team is to keep users connected, permissions correct, data available, and services running without unnecessary disruption.
+Company computer networking and data management are the backbone of successful business IT support. The goal is to keep users connected, devices healthy, access rights appropriate, and business data protected.
 
-The most important skills are:
+The most valuable skills in this field are:
+
 - understanding network basics
-- diagnosing common user issues
-- managing access and permissions
+- diagnosing common endpoint issues
+- managing identity and access
 - handling file storage and backups
 - validating service recovery
-- communicating clearly to users and teams
+- communicating clearly with users and stakeholders
 
-These skills make IT support practical, resilient, and valuable to any business.
+These skills keep the business running reliably and efficiently.
 
 ---
 
 ## Final note
 
-This catalog is designed to be used as a real-world reference and operational guide. It is not just theory. It reflects the day-to-day work of a company IT support function: keeping devices online, users productive, data safe, and business operations stable.
+This catalog is meant to be a practical operational reference for company IT support work. It is organized around the realities of modern business environments: office networking, access control, shared data, endpoint reliability, and resilient data protection.
 
-The most useful support mindset is simple:
+If you keep the following principles in mind, your IT support work will be far more effective:
 
 - know the network
 - know the data path
-- know who is allowed to access what
+- know who can access what
 - know how to restore service safely
 - document what happened and how it was fixed
 
-That combination is the foundation of reliable business IT.
+That combination is the foundation of reliable company technology operations.
+
+---
+
+## Suggested repository use
+
+This README can serve as a general knowledge base for:
+
+- onboarding new IT support staff
+- documenting common support workflows
+- creating troubleshooting checklists
+- building internal training material
+- organizing knowledge around network, permissions, and data systems
+
+If you want, this catalog can also be expanded with:
+
+- a network diagram section
+- a troubleshooting decision tree
+- a support ticket template
+- an equipment inventory checklist
+- a backup and disaster-recovery checklist
+- a glossary of common vendor tools and products
+
