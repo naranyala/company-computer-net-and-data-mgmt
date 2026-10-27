@@ -2,23 +2,23 @@
 
 A practical, business-focused reference for small-to-medium company IT support, systems administration, and digital operations.
 
-This catalog is designed for the people who keep company technology working every day: help desk staff, desktop support technicians, IT administrators, office technology managers, network support engineers, and small-business IT teams.
+This catalog is designed for the people who keep company technology working every day: help desk staff, desktop support technicians, IT administrators, office technology managers, networking support engineers, and small-business IT teams.
 
-The focus is not abstract theory alone. It is the real work of supporting end users, managing office networks, protecting company data, maintaining access rights, troubleshooting devices, and keeping operations reliable.
+The focus is not abstract theory alone. It is the real work of supporting end users, managing office networks, protecting business data, maintaining user access, troubleshooting devices, and keeping operations reliable.
 
 ---
 
 ## Why this catalog matters
 
-In a small or medium business, IT usually touches everything:
+In a small or medium business, IT touches almost every part of the operation:
 
 - user computers and printers
-- office Wi‑Fi and internet connectivity
+- Wi‑Fi and office connectivity
 - servers and shared storage
-- user accounts, email, and access rights
-- cloud tools and remote access
+- user identity, email, and permissions
+- cloud services and remote access
 - backups and business continuity
-- security, patching, and endpoint health
+- security, patching, and endpoint protection
 
 When the IT environment is healthy, the business runs smoothly. When it breaks, the impact is immediate.
 
@@ -30,11 +30,11 @@ This repository covers the core areas of company IT support:
 
 - networking and internet connectivity
 - workstation and laptop support
-- user identity and access management
-- file storage and shared folders
-- backup and disaster recovery
-- endpoint and security hygiene
-- troubleshooting and support workflow
+- identity and access management
+- file storage and shared data access
+- backup, restore, and disaster recovery
+- endpoint security and patching
+- troubleshooting and support workflows
 - documentation and operational discipline
 
 ---
@@ -44,18 +44,18 @@ This repository covers the core areas of company IT support:
 A small-to-medium business IT environment often includes:
 
 - ISP internet connection and edge router
-- firewall and secure gateway
+- firewall or secure gateway
 - LAN switches and Wi‑Fi access points
 - laptops, desktops, and mobile devices
 - printers, scanners, and office equipment
-- Active Directory or cloud identity platform
+- Active Directory, Microsoft Entra ID, or cloud identity platform
 - file server or NAS storage
 - backup appliance or cloud backup service
 - SaaS tools such as email, document storage, CRM, and ticketing
 
 ---
 
-## Core layers of a business IT system
+## Business IT layers
 
 | Layer | Purpose | Typical components |
 | --- | --- | --- |
@@ -73,104 +73,122 @@ A small-to-medium business IT environment often includes:
 
 ### 1.1 Office network design
 
-A basic office network typically includes:
+A typical office network includes:
 
 - modem or ISP router
 - firewall or security appliance
 - core switch and access switches
 - Wi‑Fi access points
-- VLANs for guest, voice, management, or server traffic
+- VLANs for guest, voice, server, and management traffic
 - user endpoints
 - shared services such as file servers and printers
 
-### 1.2 Common networking concepts
+### 1.2 Core networking concepts
 
 #### IP addressing
 An IP address identifies a device on a network.
 
 Examples:
-- `192.168.10.20`
-- `10.0.0.15`
+- 192.168.10.20
+- 10.0.0.15
+- 172.16.5.10
 
 Support relevance:
-- no valid IP often means DHCP or link issue
-- duplicate IPs can break connectivity
-- wrong subnet can isolate a device from the rest of the office
+- no valid IP often means DHCP or link issues
+- duplicate IP addresses can break connectivity
+- wrong subnet values can isolate equipment from the rest of the office
 
 #### Subnet mask
-Tells devices how to determine the local network from the host portion of an address.
+A subnet mask determines which portion of an IP address is the network and which portion is the host.
+
+This matters because:
+- devices on the same subnet can talk directly
+- devices on different subnets need a gateway
+- wrong subnet settings create confusing communication issues
 
 #### Default gateway
-Allows a device to reach other networks, including the internet.
+The default gateway allows traffic to leave the local network and reach other networks, including the internet.
 
-#### DNS
-Converts names like `fileserver` or `mail.company.com` into IP addresses.
+#### DNS and name resolution
+DNS converts names like fileserver or mail.company.com into IP addresses.
 
 Common symptoms of DNS problems:
 - websites fail to load
 - file servers cannot be reached by name
-- apps cannot resolve internal services
-- email may fail or appear intermittent
+- internal apps stop resolving correctly
+- email or login flows become unreliable
 
 #### DHCP
-Automatically assigns network details to clients.
+DHCP automatically assigns network details to clients, including:
+
+- IP address
+- subnet mask
+- gateway
+- DNS server addresses
 
 Common issues:
-- no IP lease issued
+- no IP lease assigned
+- duplicate or stale lease entries
+- wrong gateway or DNS delivered
 - rogue DHCP server on the network
-- stale lease after network changes
-- gateway or DNS assigned incorrectly
 
-#### Router and firewall
-The router connects local traffic to other networks. The firewall enforces policy for inbound and outbound traffic.
+#### Routers and firewalls
+The router connects the local network to other networks. The firewall enforces network security policy.
+
+Support tasks:
+- check route table or default path
+- review recent firewall rule changes
+- confirm VPN or remote access traffic is allowed
+- verify ISP or upstream connection health
 
 #### Switches and ports
-Switches connect devices within a LAN and provide physical access points.
+Switches connect devices inside the office LAN.
 
 Common issues:
-- broken patch cable
+- bad patch cable
 - disabled switch port
 - wrong VLAN assignment
-- loop or broadcast storm conditions
+- loop conditions or broadcast issues
+- failed port or switch hardware
 
 #### Wi‑Fi
-Wireless connectivity is often the most frequent source of user complaints in offices.
+Wi‑Fi is often the most frequent source of office complaints.
 
 Typical concerns:
-- low signal strength
-- dead zones
-- channel overlap
-- poor AP placement
-- roaming issues
+- weak signal in some areas
+- AP overlap or channel interference
+- roaming issues between access points
 - guest network isolation problems
+- poor AP placement or coverage gaps
+- stale client profiles after device changes
 
 #### VLANs
 VLANs separate traffic logically even when devices share the same physical switch.
 
 Examples:
-- management VLAN
 - staff VLAN
 - guest Wi‑Fi VLAN
 - server VLAN
+- management VLAN
 - voice VLAN
 
 ### 1.3 Connectivity troubleshooting checklist
 
-When a user says “I can’t access the internet,” check:
+When a user says, “I can’t access the internet,” check:
 
 - device is connected to Wi‑Fi or wired LAN
-- IP address is valid
+- valid IP address is assigned
 - gateway is reachable
-- DNS answers correctly
+- DNS is resolving names correctly
 - user is not using a blocked VPN route
-- firewall is not blocking the connection
+- firewall is not blocking traffic
 - ISP service is healthy
 
 ---
 
 ## 2. Endpoints and workstation support
 
-Most day-to-day IT support revolves around endpoints.
+Most day-to-day IT support work revolves around endpoints.
 
 ### 2.1 Common endpoint categories
 
@@ -187,12 +205,12 @@ Most day-to-day IT support revolves around endpoints.
 
 - slow boot or startup
 - application crashes
-- drivers not working
-- patching issues
+- driver issues
+- patching problems
 - user profile corruption
 - missing permissions
-- storage space consumption
-- malware or unexpected software installation
+- low disk space or storage issues
+- malware or unwanted software
 
 ### 2.3 Printer support
 
@@ -204,7 +222,7 @@ Common issues:
 - wrong IP address or hostname
 - driver mismatch
 - print spooler failure
-- switch port or Wi‑Fi connectivity issue
+- switch port or Wi‑Fi issue
 
 ### 2.4 Mobile device support
 
@@ -247,12 +265,12 @@ Typical onboarding steps:
 
 ### 3.3 Offboarding
 
-Offboarding is critical for security:
+Offboarding is essential for security:
 
 - disable account
-- revoke access to shared drives
+- revoke shared drive access
 - remove SaaS licenses
-- transfer or archive data if required
+- transfer or archive data when needed
 - collect company equipment
 - verify no lingering access remains
 
@@ -264,16 +282,16 @@ Best practices:
 - group-based access whenever possible
 - least privilege approach
 - periodic permission review
-- document access approval
+- documented access approval
 - remove stale rights after role changes
 
 ### 3.5 MFA and authentication support
 
-Common support cases:
+Common support issues:
 - approval not reached
 - new phone or device enrollment
-- app resets
-- lockout due to repeated failed attempts
+- authenticator reset issues
+- lockout because of repeated failed attempts
 - user cannot access VPN or email after policy changes
 
 ---
@@ -285,7 +303,7 @@ Common support cases:
 - file servers
 - NAS devices
 - department shared folders
-- cloud storage such as OneDrive, SharePoint, Google Drive
+- cloud storage such as OneDrive, SharePoint, and Google Drive
 - databases and business applications
 - email archives and collaboration platforms
 
@@ -312,9 +330,9 @@ Recommended approach:
 ### 4.4 Support issues in data access
 
 - user cannot open a folder
-- file is read-only unexpectedly
+- file is unexpectedly read-only
 - share mapping is broken
-- permission inherited unexpectedly
+- permission inheritance is incorrect
 - file server is offline or slow
 - user has wrong department access
 
@@ -327,7 +345,7 @@ Recommended approach:
 Backups protect company data against:
 
 - hardware failure
-- ransomware or malware attacks
+- ransomware or malware
 - accidental deletion
 - software corruption
 - user mistakes
@@ -343,7 +361,7 @@ Common business data to back up:
 - databases
 - email data
 - cloud storage content
-- endpoint data where required
+- endpoint data when required
 
 ### 5.3 Backup design questions
 
@@ -389,7 +407,7 @@ SMBs are often targeted because they may have weaker defenses and fewer speciali
 - MFA on critical systems
 - patching and software updates
 - antivirus and endpoint protection
-- user access review
+- user access reviews
 - secure Wi‑Fi settings
 - least privilege access
 - backup verification
@@ -413,7 +431,7 @@ SMBs are often targeted because they may have weaker defenses and fewer speciali
 - review firewall logs periodically
 - check endpoint protection status
 - confirm backups succeed and are restorable
-- verify patch status on critical devices
+- validate patch status on critical devices
 
 ---
 
@@ -462,17 +480,17 @@ Modern businesses rely heavily on cloud tools.
 
 - Microsoft 365 / Outlook / SharePoint / OneDrive
 - Google Workspace
-- cloud storage solutions
-- file collaboration tools
+- cloud storage platforms
+- document collaboration tools
 - customer relationship systems
 - ticketing and project systems
 
 ### 8.2 Cloud support concerns
 
 - failed sync
-- storage quotas
+- storage quota issues
 - stale sharing links
-- MFA or sign-in issues
+- MFA or sign-in problems
 - permission mismatches
 - downtime or service outages
 
@@ -481,7 +499,7 @@ Modern businesses rely heavily on cloud tools.
 Many companies use both local infrastructure and cloud services.
 
 Examples:
-- local file server + cloud email
+- local file server and cloud email
 - Azure AD / Entra ID with local domain services
 - on-prem login with cloud productivity apps
 - remote access through VPN and cloud identity tools
@@ -490,7 +508,7 @@ Examples:
 
 ## 9. Monitoring, maintenance, and proactive support
 
-A reliable IT environment is not just reactive. It includes proactive monitoring.
+A reliable IT environment is not only reactive. It includes proactive monitoring.
 
 ### 9.1 Monitoring activities
 
@@ -556,7 +574,7 @@ Good notes include:
 
 - date and time
 - affected user and device
-- location and office/site
+- location and site
 - issue description
 - troubleshooting steps taken
 - findings and root cause
@@ -647,8 +665,8 @@ Common remote support tasks:
 
 Support teams should think about:
 
-- access to critical services during outage
-- emergency communication method
+- access to critical services during outages
+- emergency communication methods
 - remote work readiness
 - offline workarounds for essential tasks
 - backup restore testing before a real incident
@@ -667,7 +685,7 @@ Check:
 - ISP or outage issue
 - firewall or VPN blocking traffic
 
-### User cannot reach file share
+### User cannot reach a file share
 Check:
 
 - account is active
@@ -725,10 +743,10 @@ A disciplined troubleshooting approach reduces guesswork.
 ### Step 1: Define the symptom
 Ask:
 
-- what exact problem is occurring?
-- who is affected?
-- when did it start?
-- what changed recently?
+- What exact problem is occurring?
+- Who is affected?
+- When did it start?
+- What changed recently?
 
 ### Step 2: Check the basics
 
@@ -741,19 +759,19 @@ Ask:
 
 ### Step 3: Reduce the scope
 
-- is it one user or many?
-- is it one office or all locations?
-- is it local, remote, or cloud-based?
+- Is it one user or many?
+- One office or multiple locations?
+- Local, remote, or cloud-based?
 
 ### Step 4: Validate likely causes
 
 Useful tools:
 
-- `ping`
-- `tracert` / `traceroute`
-- `nslookup` or `dig`
-- `ipconfig /all`
-- `arp -a`
+- ping
+- tracert / traceroute
+- nslookup or dig
+- ipconfig /all
+- arp -a
 - firewall logs
 - switch port status
 - event logs
@@ -778,31 +796,31 @@ Before closing a ticket, confirm:
 
 ### Windows
 
-- `ipconfig /all`
-- `ping <hostname>`
-- `tracert <hostname>`
-- `nslookup <domain>`
-- `arp -a`
-- `netstat -an`
-- `route print`
-- `systeminfo`
-- `tasklist`
-- `services.msc`
-- `diskpart`
-- `getmac`
+- ipconfig /all
+- ping <hostname>
+- tracert <hostname>
+- nslookup <domain>
+- arp -a
+- netstat -an
+- route print
+- systeminfo
+- tasklist
+- services.msc
+- diskpart
+- getmac
 
 ### Linux / Unix
 
-- `ip addr`
-- `ifconfig`
-- `ping`
-- `traceroute`
-- `dig`
-- `ss -tulpn`
-- `df -h`
-- `du -sh`
-- `mount`
-- `journalctl`
+- ip addr
+- ifconfig
+- ping
+- traceroute
+- dig
+- ss -tulpn
+- df -h
+- du -sh
+- mount
+- journalctl
 
 ### Operational checks
 
@@ -859,7 +877,7 @@ A network control that filters traffic based on policy.
 Network-attached storage used for shared file access.
 
 ### SAN
-Storage area network for block-based storage used by servers and apps.
+Storage area network for block-based storage used by servers and applications.
 
 ### VPN
 Virtual private network for secure remote or inter-site connectivity.
