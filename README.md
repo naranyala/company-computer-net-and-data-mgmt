@@ -1,86 +1,153 @@
 # Company IT Support, Networking, and Data Management Catalog
 
-A practical, business-focused reference for IT support, systems administration, help desk operations, endpoint management, networking, business data protection, database operations, and system optimization in small-to-medium organizations.
+A practical, business-focused reference for small-to-medium company IT support, systems administration, database operations, data management, and operational technology in real business environments.
 
-This catalog is designed for IT support professionals, help desk technicians, desktop support specialists, network administrators, junior systems administrators, database support staff, and operational technology professionals who want to improve service quality, reduce downtime, strengthen security, and demonstrate professional competence in day-to-day business technology operations.
+This repository is designed for people who keep company technology working every day: help desk technicians, desktop support staff, IT administrators, systems support specialists, network support technicians, database support staff, and operations-focused professionals working in office and small-business technology environments.
 
-It is intentionally written to be useful for both real-world support work and portfolio development. It highlights not only technical knowledge but also operational discipline, troubleshooting capability, business awareness, database reliability, and system performance tuning.
+The focus is not abstract theory alone. It is the real work of supporting users, maintaining network and endpoint health, protecting business data, managing access, troubleshooting services, optimizing system performance, and keeping business technology reliable and secure.
+
+---
+
+## Repository purpose
+
+This project is intended to serve as:
+
+- a practical catalog of SMB IT support and operations
+- a reference for networking, identity, storage, backup, database, and system performance issues
+- a professional portfolio resource for IT support and systems operations roles
+- a living knowledge base for troubleshooting and operational best practices
 
 ---
 
 ## Why this catalog matters
 
-In a small or medium business, technology is not an isolated department; it is part of every business function.
+In a small or medium business, technology touches nearly every business process:
 
-When IT is healthy, employees can work without disruption. When IT fails, productivity, security, customer service, compliance, and business continuity all suffer.
+- user computers and printers
+- Wi‑Fi and office connectivity
+- servers and shared storage
+- user identity, email, and permissions
+- cloud services and remote access
+- backups and business continuity
+- security, patching, and endpoint protection
+- database systems and business data services
+- software performance and overall system health
 
-This catalog addresses the practical questions that matter in the workplace:
-
-- How do users connect to the network and get to their resources?
-- How do we troubleshoot a device, printer, VPN, or shared drive?
-- How do we protect business data and recover from failures?
-- How do we secure identities and control user access?
-- How do we maintain database reliability and application performance?
-- How do we optimize system speed and resource usage without causing instability?
-- How do we maintain a reliable support process while documenting work professionally?
-
----
-
-## Portfolio value for IT professionals
-
-This repository is structured to support both technical learning and professional positioning.
-
-It reflects the kind of work employers expect from capable IT support and systems staff, including:
-
-- troubleshooting PCs, laptops, mobile devices, and printers
-- supporting office connectivity, Wi‑Fi, and LAN services
-- managing identity, MFA, permissions, and account lifecycle
-- maintaining file access, storage, and backup operations
-- supporting cloud tools and SaaS platforms
-- working with business databases and data services
-- tuning operating systems and workstations for better responsiveness
-- documenting incidents, changes, and recurring problems
-- improving service reliability, performance, and user experience
-- maintaining a secure and organized digital environment
-
-This makes the catalog valuable as a portfolio artifact, personal study guide, internal knowledge base, or operational reference for SMB IT teams.
+When IT is healthy, the business runs smoothly. When IT fails, the impact is immediate.
 
 ---
 
-## Scope of the catalog
+## Technical expertise evaluation framework
 
-This repository covers the core areas of practical business IT support:
+This repository is especially useful when evaluating technical expertise for professional roles in IT support, systems administration, networking, database support, and operations. The goal is not simply to check whether someone knows terms, but whether they can support real business systems reliably and professionally.
 
-- network connectivity and office infrastructure
-- workstation and endpoint support
-- identity and access management
-- shared file systems and data access
-- database support and data services
-- backup, restore, and business continuity
-- endpoint security and patching
-- cloud services and SaaS support
-- troubleshooting and help desk workflows
-- system optimization and performance tuning
-- documentation, governance, and operational maturity
+### 1. Core technical competency domains
+
+A strong technical candidate should demonstrate practical knowledge in the following areas:
+
+#### Networking and connectivity
+- IP addressing, subnetting, DNS, DHCP, default gateways
+- Wi‑Fi troubleshooting, VLANs, switch ports, routing, firewalls
+- ISP and interoffice connectivity issues
+- packet loss, latency, and access path analysis
+
+#### Endpoint and workstation support
+- desktops, laptops, printers, scanners, mobile devices
+- hardware replacement, software issues, user profile issues, driver troubleshooting
+- patching, performance lag, startup problems, malware support
+
+#### Identity and access management
+- Active Directory, Entra ID, user lifecycle, MFA, permission models, group-based access
+- onboarding, offboarding, role changes, access reviews
+- account lockouts, sign-in issues, and least-privilege control
+
+#### File and storage management
+- file shares, NAS, permission inheritance, cloud storage sync, quota issues
+- storage capacity review, archive strategies, data ownership, access control
+
+#### Backup, recovery, and continuity
+- RPO, RTO, restore validation, disaster recovery, backup job monitoring, retention design
+- recovery planning for files, VMs, databases, and cloud services
+
+#### Database and application support
+- SQL Server, MySQL, PostgreSQL, SQLite, business application databases
+- login failures, slow queries, connection issues, log growth, index review, backup/restore
+- database health checks and transaction integrity monitoring
+
+#### System optimization and tuning
+- CPU, memory, disk, I/O bottleneck analysis
+- startup performance, application responsiveness, background service review
+- database tuning, indexing, cache efficiency, and request optimization
+
+#### Security hygiene and governance
+- patch compliance, malware protection, firewall rules, role-based access, permissions review
+- log review, alerts, audit readiness, incident response basics
+
+#### Monitoring and operations discipline
+- health checks, system monitoring, maintenance windows, change control, documentation
+- ticketing workflows, escalation paths, issue validation before closure
 
 ---
 
-## Typical SMB IT environment
+## Professional competency evaluation areas
 
-A small-to-medium business technology environment often includes:
+The best IT professionals are not only technically capable; they also show strong operational maturity.
+
+### 2. Technical depth
+A candidate should be able to explain:
+- how systems work together
+- what a failure likely means
+- how to isolate scope before making changes
+- how to validate a fix before closing the issue
+
+### 3. Troubleshooting discipline
+This is a key differentiator. Strong support professionals:
+- define the symptom clearly
+- check the basics first
+- reduce the scope
+- determine whether the issue is user, device, network, identity, storage, database, or service-related
+- verify with evidence before calling it resolved
+
+### 4. Performance awareness
+Performance expertise means understanding:
+- why a workstation is slow
+- why a database is timing out
+- why a network path is congested
+- why storage or memory pressure affects user experience
+- how to tune or optimize without causing disruption
+
+### 5. Security awareness
+Security-minded support staff understand:
+- least privilege access
+- MFA and privilege reviews
+- backup integrity and restore testing
+- application and service account controls
+- log review and access anomalies
+
+### 6. Professional communication
+IT staff must communicate clearly with both technical and non-technical users. This includes:
+- explaining the issue in plain language
+- documenting requirements and changes
+- giving concise status updates
+- escalating appropriately
+- communicating resolution and prevention steps
+
+---
+
+## SMB IT environment overview
+
+A small-to-medium business environment often includes:
 
 - ISP internet connection and edge router
 - firewall or secure gateway
-- LAN switches and Wi‑Fi access points
-- laptops, desktops, and mobile devices
-- printers, scanners, and shared office equipment
-- Active Directory, Entra ID, or cloud identity platform
-- file server or NAS storage
-- database server or application data platform
-- backup appliance or cloud backup service
-- SaaS applications such as email, document storage, CRM, ticketing, and project tools
+- office LAN switches and Wi‑Fi access points
+- endpoint devices such as laptops, desktops, mobile phones, printers, scanners
+- servers or virtual machines for file, identity, and application services
+- local or cloud-based business data platforms and databases
+- backup systems and restore processes
+- SaaS business tools such as email, document storage, CRM, ticketing, and collaboration software
 
-This environment is where IT support professionals operate every day: keeping systems available, users productive, and business data protected.
+This environment is the real world in which support professionals work every day.
 
 ---
 
@@ -95,45 +162,13 @@ This environment is where IT support professionals operate every day: keeping sy
 | Data layer | Storage and file access | file servers, NAS, cloud storage, databases |
 | Application layer | Business services | ERP, CRM, ticketing, internal apps, database systems |
 | Security layer | Protection and governance | patching, endpoint security, access reviews |
-| Operations layer | Maintenance and support | monitoring, tickets, backups, docs, tuning |
+| Operations layer | Maintenance and support | monitoring, tickets, backups, documentation, tuning |
 
 ---
 
-## 1. Core responsibilities of IT support staff
+## 1. Network fundamentals for company IT
 
-IT support professionals are responsible for more than fixing isolated technical issues. They are the operational backbone of digital reliability in the workplace.
-
-### 1.1 Primary responsibilities
-
-- support end users with hardware, software, and access issues
-- troubleshoot network, Wi‑Fi, and connectivity problems
-- manage user accounts, permissions, and access rights
-- maintain endpoint health, patching, and security posture
-- support file access, printing, and shared data services
-- support business databases and application data environments
-- monitor system performance and resource usage
-- coordinate with vendors for network or equipment issues
-- ensure backups and restore capabilities remain operational
-- document incidents, changes, and recurring issues
-- maintain service continuity during outages or business disruptions
-
-### 1.2 Quality expectations
-
-A strong IT support professional is expected to:
-
-- communicate clearly with non-technical users
-- think systematically instead of guessing
-- work efficiently under time pressure
-- prioritize urgent business impact
-- document findings and resolutions
-- maintain confidentiality for sensitive business systems
-- learn quickly and adapt as environments evolve
-
----
-
-## 2. Network fundamentals for company IT
-
-### 2.1 Office network design
+### 1.1 Office network design
 
 A typical office network includes:
 
@@ -145,10 +180,10 @@ A typical office network includes:
 - user endpoints
 - shared services such as servers, printers, database systems, and cloud gateways
 
-### 2.2 Core networking concepts
+### 1.2 Core networking concepts
 
 #### IP addressing
-IP addresses identify devices on a network.
+An IP address identifies a device on a network.
 
 Examples:
 - 192.168.10.20
@@ -156,33 +191,33 @@ Examples:
 - 172.16.5.10
 
 Support relevance:
-- no valid IP often means DHCP or link failure
+- no valid IP often indicates DHCP or link issues
 - duplicate IPs can break connectivity
-- incorrect subnet values can isolate systems from the business network
+- incorrect subnet values can isolate one area from the rest of the office
 
 #### Subnet masks
-A subnet mask determines which portion of the IP address is the network and which is the host.
+A subnet mask determines which portion of the IP address is network and which is host.
 
 This matters because:
-- devices on the same subnet can communicate directly
-- devices on different subnets require a gateway
-- incorrect subnet settings create confusing communication problems
+- devices on the same subnet can talk directly
+- devices on different subnets need a gateway
+- wrong subnet values cause difficult-to-diagnose communication errors
 
 #### Default gateway
-The default gateway is the path for traffic leaving the local network to reach external destinations, such as the internet.
+The default gateway allows traffic to leave a local network and reach external networks, including the internet.
 
 #### DNS and name resolution
-DNS resolves names such as fileserver, database.company.local, or mail.company.com into IP addresses.
+DNS resolves names such as fileserver, db.company.local, or mail.company.com into IP addresses.
 
-Common symptoms of DNS problems:
+Common symptoms:
 - websites fail to load
 - internal apps stop resolving
 - file servers cannot be reached by name
-- email and authentication workflows become inconsistent
-- database clients fail to connect by hostname
+- email and login flows become unreliable
+- database clients fail when connecting by hostname
 
 #### DHCP
-DHCP automatically assigns network configuration details, including:
+DHCP automatically assigns configuration details to clients, including:
 
 - IP address
 - subnet mask
@@ -211,22 +246,22 @@ Common issues:
 - bad patch cable
 - disabled ports
 - wrong VLAN assignment
-- loop or broadcast storms
+- loop conditions or broadcast storms
 - failed port or switch hardware
 
 #### Wi‑Fi
-Wi‑Fi is a frequent source of office complaints.
+Wi‑Fi is often a frequent source of office complaints.
 
 Typical concerns:
 - weak signal in some areas
-- AP overlap or channel interference
-- roaming issues between access points
+- access point overlap or channel interference
+- roaming between access points
 - guest network isolation problems
-- poor access point placement or coverage gaps
-- stale device profiles after changes
+- poor access point placement and coverage gaps
+- stale client profiles after device changes
 
 #### VLANs
-VLANs separate traffic logically within the same physical network.
+VLANs logically separate traffic within the same physical network.
 
 Examples:
 - staff VLAN
@@ -235,25 +270,25 @@ Examples:
 - management VLAN
 - voice VLAN
 
-### 2.3 Connectivity troubleshooting checklist
+### 1.3 Connectivity troubleshooting checklist
 
-When a user reports, “I can’t access the internet,” the support professional should check:
+When a user says, “I can’t access the internet,” check:
 
-- device is connected to Wi‑Fi or wired connection
+- device is connected to Wi‑Fi or wired LAN
 - valid IP address is assigned
 - gateway is reachable
-- DNS is resolving properly
+- DNS is resolving correctly
 - user is not using a blocked VPN route
 - firewall is not filtering traffic incorrectly
-- ISP connection is healthy
+- ISP service is healthy
 
 ---
 
-## 3. Endpoints and workstation support
+## 2. Endpoints and workstation support
 
 Most day-to-day IT support work centers on endpoints.
 
-### 3.1 Common endpoint categories
+### 2.1 Common endpoint categories
 
 - desktops
 - laptops
@@ -264,7 +299,7 @@ Most day-to-day IT support work centers on endpoints.
 - conference room hardware
 - thin clients or kiosk devices
 
-### 3.2 Typical endpoint problems
+### 2.2 Typical endpoint problems
 
 - slow boot or startup
 - application crashes or lockups
@@ -276,7 +311,7 @@ Most day-to-day IT support work centers on endpoints.
 - malware or unauthorized software
 - excessive background services affecting responsiveness
 
-### 3.3 Printer support
+### 2.3 Printer support
 
 Printers are often a major source of office tickets.
 
@@ -288,7 +323,7 @@ Common issues:
 - print spooler failure
 - switch port or Wi‑Fi issue
 
-### 3.4 Mobile device support
+### 2.4 Mobile device support
 
 Support activities often include:
 
@@ -301,9 +336,9 @@ Support activities often include:
 
 ---
 
-## 4. Identity and access management
+## 3. Identity and access management
 
-### 4.1 User identity basics
+### 3.1 User identity basics
 
 A user identity is how a person is recognized in the company’s digital systems.
 
@@ -314,7 +349,7 @@ Examples:
 - local desktop accounts
 - service accounts
 
-### 4.2 Onboarding
+### 3.2 Onboarding
 
 Typical onboarding steps:
 
@@ -327,7 +362,7 @@ Typical onboarding steps:
 - map printers and shared drives
 - verify the user can access essential systems
 
-### 4.3 Offboarding
+### 3.3 Offboarding
 
 Offboarding is essential for security and operational continuity:
 
@@ -338,7 +373,7 @@ Offboarding is essential for security and operational continuity:
 - collect company equipment
 - confirm no lingering access remains
 
-### 4.4 Permissions and groups
+### 3.4 Permissions and groups
 
 Permissions should be controlled and reviewed regularly.
 
@@ -349,7 +384,7 @@ Best practices:
 - documented approval process
 - remove stale rights after role changes
 
-### 4.5 MFA and authentication support
+### 3.5 MFA and authentication support
 
 Common support issues:
 - approval not received
@@ -360,18 +395,18 @@ Common support issues:
 
 ---
 
-## 5. Shared data and file management
+## 4. Shared data and file management
 
-### 5.1 Where company data usually lives
+### 4.1 Where company data usually lives
 
 - file servers
 - NAS appliances
 - department shared folders
-- cloud storage such as OneDrive, SharePoint, Google Drive
+- cloud storage such as OneDrive, SharePoint, and Google Drive
 - databases and business systems
 - email archives and collaboration platforms
 
-### 5.2 Shared folder design
+### 4.2 Shared folder design
 
 A well-organized shared data model includes:
 
@@ -381,17 +416,17 @@ A well-organized shared data model includes:
 - templates and standard forms
 - archived records and retention storage
 
-### 5.3 File permission model
+### 4.3 File permission model
 
 Recommended approach:
 
-- assign permissions via groups
+- assign permissions by group
 - avoid broad access rights
 - review sensitive folders regularly
 - document ownership of each share
 - validate access during role changes
 
-### 5.4 Support issues in data access
+### 4.4 Support issues in data access
 
 - user cannot open a folder
 - file appears read-only unexpectedly
@@ -400,20 +435,22 @@ Recommended approach:
 - file server is offline or slow
 - user has wrong department access
 
-### 5.5 Database systems and data services
+---
 
-Modern business operations often rely on structured data systems that support accounting, HR, CRM, inventory, operations, and reporting.
+## 5. Database support and business data systems
 
-#### Common database platforms
+Business data systems are critical to many operations, including finance, HR, inventory, customer records, and reporting. Database support is a core part of modern IT operations.
+
+### 5.1 Common database platforms
 
 - Microsoft SQL Server
 - MySQL / MariaDB
 - PostgreSQL
 - SQLite for lightweight local applications
-- Oracle Database in larger enterprise environments
-- cloud-hosted database services connected to SaaS and business apps
+- Oracle Database in larger enterprise settings
+- cloud-hosted database services connected to business applications
 
-#### Database support responsibilities
+### 5.2 Database support responsibilities
 
 Database-related support work can include:
 
@@ -421,14 +458,14 @@ Database-related support work can include:
 - checking connection failures and login issues
 - reviewing application errors tied to SQL statements or service dependencies
 - monitoring disk space and transaction log growth
-- restoring backup data after accidental data loss or corruption
+- restoring backup data after accidental loss or corruption
 - validating permissions for application and user access
 - checking for lock contention, slow queries, and replication drift
-- reviewing database maintenance tasks such as backups, indexing, and cleanup
+- reviewing maintenance tasks such as backups, indexing, and cleanup
 
-#### Database performance basics
+### 5.3 Database performance basics
 
-Database performance is often impacted by:
+Database performance is often affected by:
 
 - poorly optimized queries
 - missing or outdated indexes
@@ -438,7 +475,7 @@ Database performance is often impacted by:
 - blocking or deadlocks
 - application design issues or excessive polling
 
-#### Database troubleshooting checklist
+### 5.4 Database troubleshooting checklist
 
 When a database issue occurs, review:
 
@@ -451,7 +488,7 @@ When a database issue occurs, review:
 - database log and error files
 - indexing and statistics freshness
 
-#### Database security considerations
+### 5.5 Database security considerations
 
 Business data systems require careful access control, including:
 
@@ -495,7 +532,7 @@ Common business data to protect:
 - What is being backed up?
 - Where is the data stored?
 - How frequently does the job run?
-- How long is the data retained?
+- How long is it retained?
 - What happens if the backup target fails?
 - Has the restore process been tested recently?
 
@@ -511,7 +548,7 @@ Common business data to protect:
 - external disk rotation
 - virtualization backup tools
 - SaaS retention tools
-- database-specific backup systems and log shipping
+- database-specific backups and log shipping
 
 ### 6.6 Disaster recovery
 
@@ -657,7 +694,7 @@ A reliable IT environment is not only reactive. It also includes proactive opera
 - endpoint health checks
 - certificate expiry monitoring
 - service availability checks
-- database health check and connection monitoring
+- database health checks and connection monitoring
 - application response time checks
 
 ### 10.2 Maintenance windows
